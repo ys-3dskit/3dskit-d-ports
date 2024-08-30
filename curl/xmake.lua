@@ -6,7 +6,7 @@ includes("../toolchain/*.lua")
 
 add_rules("mode.debug", "mode.release")
 
-target("3ds-d-zlib")
+target("3ds-d-curl")
 	set_kind("static")
 	set_plat("3ds")
 
