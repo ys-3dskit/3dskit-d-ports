@@ -8,7 +8,7 @@ import ys3ds.mbedtls.cipher;
 import ys3ds.mbedtls.pk;
 import ys3ds.mbedtls.md;
 
-extern (C):
+extern (C) @nogc nothrow:
 
 /*
  *  Copyright The Mbed TLS Contributors

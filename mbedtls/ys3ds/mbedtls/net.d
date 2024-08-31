@@ -6,7 +6,7 @@
  * \deprecated Superseded by mbedtls/net_sockets.h
  */
 
-extern (C):
+extern (C) @nogc nothrow:
 
 /*
  *  Copyright The Mbed TLS Contributors

@@ -12,7 +12,7 @@
 
 import ys3ds.mbedtls.cipher;
 
-extern (C):
+extern (C) @nogc nothrow:
 
 /* MBEDTLS_USE_PSA_CRYPTO */
 

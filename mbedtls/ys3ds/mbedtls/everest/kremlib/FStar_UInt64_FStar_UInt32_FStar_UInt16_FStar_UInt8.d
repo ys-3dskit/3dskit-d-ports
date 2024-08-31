@@ -9,7 +9,7 @@
 
 import ys3ds.mbedtls.everest.kremlin.internal.compat;
 
-extern (C):
+extern (C) @nogc nothrow:
 
 extern __gshared Prims_int FStar_UInt64_n;
 

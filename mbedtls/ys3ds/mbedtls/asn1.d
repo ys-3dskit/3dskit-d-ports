@@ -10,7 +10,7 @@
 
 import ys3ds.mbedtls.bignum;
 
-extern (C):
+extern (C) @nogc nothrow:
 
 /**
  * \addtogroup asn1_module

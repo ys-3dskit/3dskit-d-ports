@@ -8,7 +8,7 @@
  *  SPDX-License-Identifier: Apache-2.0 OR GPL-2.0-or-later
  */
 
-extern (C):
+extern (C) @nogc nothrow:
 
 enum MBEDTLS_XTEA_ENCRYPT = 1;
 enum MBEDTLS_XTEA_DECRYPT = 0;

@@ -4,7 +4,7 @@ import core.stdc.config;
 import core.sys.horizon.sys.select;
 import core.sys.horizon.sys.socket;
 
-extern (C):
+extern (C) @nogc nothrow:
 
 /***************************************************************************
  *                                  _   _ ____  _

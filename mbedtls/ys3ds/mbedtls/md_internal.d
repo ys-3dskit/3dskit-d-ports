@@ -14,7 +14,7 @@
 
 import ys3ds.mbedtls.md;
 
-extern (C):
+extern (C) @nogc nothrow:
 
 /**
  * Message digest information.

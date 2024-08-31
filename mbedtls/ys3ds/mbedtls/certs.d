@@ -8,7 +8,7 @@
  *  SPDX-License-Identifier: Apache-2.0 OR GPL-2.0-or-later
  */
 
-extern (C):
+extern (C) @nogc nothrow:
 
 /* List of all PEM-encoded CA certificates, terminated by NULL;
  * PEM encoded if MBEDTLS_PEM_PARSE_C is enabled, DER encoded

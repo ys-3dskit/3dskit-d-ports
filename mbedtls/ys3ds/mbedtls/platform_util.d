@@ -13,7 +13,7 @@ import ys3ds.mbedtls.platform_time;
 
 import core.stdc.time;
 
-extern (C):
+extern (C) @nogc nothrow:
 
 /* MBEDTLS_HAVE_TIME_DATE */
 

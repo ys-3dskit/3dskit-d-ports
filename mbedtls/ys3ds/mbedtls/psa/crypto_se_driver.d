@@ -27,7 +27,7 @@ import core.stdc.stdint;
 
 import ys3ds.mbedtls.psa.crypto_driver_common;
 
-extern (C):
+extern (C) @nogc nothrow:
 
 /** \defgroup se_init Secure element driver initialization
  */

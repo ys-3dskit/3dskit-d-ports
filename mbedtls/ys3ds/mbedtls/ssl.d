@@ -17,7 +17,7 @@ import ys3ds.mbedtls.ecp;
 
 import ys3ds.mbedtls.ssl_internal;
 
-extern (C):
+extern (C) @nogc nothrow:
 
 /*
  *  Copyright The Mbed TLS Contributors

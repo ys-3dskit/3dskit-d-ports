@@ -12,7 +12,7 @@ import ys3ds.mbedtls.x509;
 import ys3ds.mbedtls.md;
 import ys3ds.mbedtls.pk;
 
-extern (C):
+extern (C) @nogc nothrow:
 
 /**
  * \addtogroup x509_module

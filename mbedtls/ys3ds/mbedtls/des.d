@@ -13,7 +13,7 @@
  *
  */
 
-extern (C):
+extern (C) @nogc nothrow:
 
 enum MBEDTLS_DES_ENCRYPT = 1;
 enum MBEDTLS_DES_DECRYPT = 0;

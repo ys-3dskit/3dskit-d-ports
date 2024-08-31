@@ -13,7 +13,7 @@
 import ys3ds.mbedtls.md;
 import ys3ds.mbedtls.asn1;
 
-extern (C):
+extern (C) @nogc nothrow:
 
 /** Bad input parameters to function. */
 enum MBEDTLS_ERR_PKCS5_BAD_INPUT_DATA = -0x2f80;

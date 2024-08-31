@@ -22,7 +22,7 @@ import ys3ds.mbedtls.psa.crypto_compat;
 import ys3ds.mbedtls.psa.crypto_values;
 import ys3ds.mbedtls.ecp;
 
-extern (C):
+extern (C) @nogc nothrow:
 
 /* UID for secure storage seed */
 enum PSA_CRYPTO_ITS_RANDOM_SEED_UID = 0xFFFFFF52;

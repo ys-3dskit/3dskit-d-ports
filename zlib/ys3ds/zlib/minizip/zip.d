@@ -43,7 +43,7 @@ import ys3ds.zlib;
 import ys3ds.zlib.zconf;
 import ys3ds.zlib.minizip.ioapi;
 
-extern (C):
+extern (C) @nogc nothrow:
 
 //#define HAVE_BZIP2
 

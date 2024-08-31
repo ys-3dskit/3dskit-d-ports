@@ -24,7 +24,7 @@ import core.stdc.stddef;
 
 import ys3ds.mbedtls.psa.crypto;
 
-extern (C):
+extern (C) @nogc nothrow:
 
 /*
  * To support both openless APIs and psa_open_key() temporarily, define

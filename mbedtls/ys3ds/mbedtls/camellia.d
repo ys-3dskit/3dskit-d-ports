@@ -10,7 +10,7 @@
 
 import ys3ds.mbedtls.platform_util;
 
-extern (C):
+extern (C) @nogc nothrow:
 
 enum MBEDTLS_CAMELLIA_ENCRYPT = 1;
 enum MBEDTLS_CAMELLIA_DECRYPT = 0;

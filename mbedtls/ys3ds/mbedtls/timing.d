@@ -10,7 +10,7 @@
 
 import core.stdc.config;
 
-extern (C):
+extern (C) @nogc nothrow:
 
 // Regular implementation
 //

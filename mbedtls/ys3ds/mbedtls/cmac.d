@@ -13,7 +13,7 @@
 
 import ys3ds.mbedtls.cipher;
 
-extern (C):
+extern (C) @nogc nothrow:
 
 /* MBEDTLS_ERR_CMAC_HW_ACCEL_FAILED is deprecated and should not be used. */
 /** CMAC hardware accelerator failed. */

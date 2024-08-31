@@ -4,7 +4,7 @@
 import core.stdc.config;
 import core.stdc.stdio;
 
-extern (C):
+extern (C) @nogc nothrow:
 
 /* Types which are either abstract, meaning that have to be implemented in C, or
  * which are models, meaning that they are swapped out at compile-time for

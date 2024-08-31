@@ -22,7 +22,7 @@
 import ys3ds.mbedtls.everest.x25519;
 import ys3ds.mbedtls.ecp;
 
-extern (C):
+extern (C) @nogc nothrow:
 
 /**
  * Defines the source of the imported EC key.

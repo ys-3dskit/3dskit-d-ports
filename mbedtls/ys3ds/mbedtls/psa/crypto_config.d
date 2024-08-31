@@ -4,7 +4,7 @@
  *
  */
 
-extern (C):
+extern (C) @nogc nothrow:
 
 /**
  * When #MBEDTLS_PSA_CRYPTO_CONFIG is enabled in config.h,

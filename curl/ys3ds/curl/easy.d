@@ -1,6 +1,6 @@
 module ys3ds.curl.easy;
 
-extern (C):
+extern (C) @nogc nothrow:
 
 import ys3ds.curl;
 

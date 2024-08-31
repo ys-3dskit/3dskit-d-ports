@@ -7,7 +7,7 @@
  * KreMLin version: 916c37ac
  */
 
-extern (C):
+extern (C) @nogc nothrow:
 
 void Hacl_Curve25519_crypto_scalarmult (ubyte* mypublic, ubyte* secret, ubyte* basepoint);
 

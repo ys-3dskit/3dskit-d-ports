@@ -10,7 +10,7 @@
  *  SPDX-License-Identifier: Apache-2.0 OR GPL-2.0-or-later
  */
 
-extern (C):
+extern (C) @nogc nothrow:
 
 /* MBEDTLS_ERR_SHA512_HW_ACCEL_FAILED is deprecated and should not be used. */
 /** SHA-512 hardware accelerator failed */

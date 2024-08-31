@@ -10,7 +10,7 @@
 
 import ys3ds.mbedtls.sha512;
 
-extern (C):
+extern (C) @nogc nothrow:
 
 /** Critical entropy source failure. */
 enum MBEDTLS_ERR_ENTROPY_SOURCE_FAILED = -0x003C;

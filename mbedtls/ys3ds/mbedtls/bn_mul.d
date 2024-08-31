@@ -4,7 +4,7 @@
  * \brief Multi-precision integer library
  */
 
-extern (C):
+extern (C) @nogc nothrow:
 
 /*
  *  Copyright The Mbed TLS Contributors

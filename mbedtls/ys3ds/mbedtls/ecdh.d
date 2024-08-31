@@ -20,7 +20,7 @@
 import ys3ds.mbedtls.ecp;
 import ys3ds.mbedtls.bignum;
 
-extern (C):
+extern (C) @nogc nothrow:
 
 /**
  * Defines the source of the imported EC key.

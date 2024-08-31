@@ -3,7 +3,7 @@
 
 import core.stdc.string;
 
-extern (C):
+extern (C) @nogc nothrow:
 
 /******************************************************************************/
 /* Implementing C.fst (part 2: endian-ness macros)                            */

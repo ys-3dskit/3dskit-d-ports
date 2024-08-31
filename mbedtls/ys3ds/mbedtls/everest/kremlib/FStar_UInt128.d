@@ -10,7 +10,7 @@
 public import ys3ds.mbedtls.everest.kremlin.internal.types : FStar_UInt128_t;
 import ys3ds.mbedtls.everest.kremlin.internal.types;
 
-extern (C):
+extern (C) @nogc nothrow:
 
 ulong FStar_UInt128___proj__Mkuint128__item__low (FStar_UInt128_uint128 projectee);
 

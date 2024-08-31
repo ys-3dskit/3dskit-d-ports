@@ -12,7 +12,7 @@
  *
  */
 
-extern (C):
+extern (C) @nogc nothrow:
 
 /* MBEDTLS_ERR_ARC4_HW_ACCEL_FAILED is deprecated and should not be used. */
 /** ARC4 hardware accelerator failed. */

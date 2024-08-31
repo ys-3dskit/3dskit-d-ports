@@ -10,7 +10,7 @@
  *  SPDX-License-Identifier: Apache-2.0 OR GPL-2.0-or-later
  */
 
-extern (C):
+extern (C) @nogc nothrow:
 
 /** The selected feature is not available. */
 enum MBEDTLS_ERR_MD_FEATURE_UNAVAILABLE = -0x5080;

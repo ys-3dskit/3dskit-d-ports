@@ -24,7 +24,7 @@ import core.stdc.stdio;
 import core.stdc.stdlib;
 import core.stdc.time;
 
-extern (C):
+extern (C) @nogc nothrow:
 
 /*
  *  Copyright The Mbed TLS Contributors

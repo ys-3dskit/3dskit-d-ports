@@ -11,7 +11,7 @@
 import core.stdc.config;
 import core.stdc.time;
 
-extern (C):
+extern (C) @nogc nothrow:
 
 /*
  * The time_t datatype

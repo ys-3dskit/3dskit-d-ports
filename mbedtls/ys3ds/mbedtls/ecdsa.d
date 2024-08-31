@@ -19,7 +19,7 @@ import ys3ds.mbedtls.ecp;
 import ys3ds.mbedtls.bignum;
 import ys3ds.mbedtls.md;
 
-extern (C):
+extern (C) @nogc nothrow:
 
 /**
  * \brief           Maximum ECDSA signature size for a given curve bit size

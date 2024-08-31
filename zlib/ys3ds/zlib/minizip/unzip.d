@@ -48,7 +48,7 @@ import ys3ds.zlib;
 import ys3ds.zlib.zconf;
 import ys3ds.zlib.minizip.ioapi;
 
-extern (C):
+extern (C) @nogc nothrow:
 
 enum Z_BZIP2ED = 12;
 

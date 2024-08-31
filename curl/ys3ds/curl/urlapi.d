@@ -2,7 +2,7 @@ module ys3ds.curl.urlapi;
 
 import ys3ds.curl;
 
-extern (C):
+extern (C) @nogc nothrow:
 
 /***************************************************************************
  *                                  _   _ ____  _

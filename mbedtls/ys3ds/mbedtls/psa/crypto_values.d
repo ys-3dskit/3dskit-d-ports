@@ -28,7 +28,7 @@ module ys3ds.mbedtls.psa.crypto_values;
 
 import ys3ds.mbedtls.psa.crypto_types;
 
-extern (C):
+extern (C) @nogc nothrow:
 
 /** \defgroup error Error codes
  * @{

@@ -3,7 +3,7 @@ module ys3ds.curl.stdcheaders;
 import core.stdc.config;
 import core.stdc.stdio;
 
-extern (C):
+extern (C) @nogc nothrow:
 
 /***************************************************************************
  *                                  _   _ ____  _

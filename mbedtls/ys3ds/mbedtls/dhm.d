@@ -51,7 +51,7 @@
 import ys3ds.mbedtls.bignum;
 import ys3ds.mbedtls.platform_util;
 
-extern (C):
+extern (C) @nogc nothrow:
 
 /*
  * DHM Error codes

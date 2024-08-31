@@ -1,7 +1,7 @@
 /* Copyright (c) INRIA and Microsoft Corporation. All rights reserved.
    Licensed under the Apache 2.0 License. */
 
-extern (C):
+extern (C) @nogc nothrow:
 
 /* A series of macros that define C implementations of types that are not Low*,
  * to facilitate porting programs to Low*. */

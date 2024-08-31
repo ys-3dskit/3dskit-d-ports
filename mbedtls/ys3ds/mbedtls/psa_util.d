@@ -13,7 +13,7 @@
 
 import ys3ds.mbedtls.ctr_drbg;
 
-extern (C):
+extern (C) @nogc nothrow:
 
 /* Translations for symmetric crypto. */
 

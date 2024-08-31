@@ -8,7 +8,7 @@ module ys3ds.zlib.zconf;
 import core.stdc.config;
 import core.sys.horizon.sys.types;
 
-extern (C):
+extern (C) @nogc nothrow:
 
 /*
  * Compile with -DMAXSEG_64K if the alloc function cannot allocate more

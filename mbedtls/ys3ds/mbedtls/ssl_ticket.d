@@ -10,7 +10,7 @@
 
 import ys3ds.mbedtls.cipher;
 
-extern (C):
+extern (C) @nogc nothrow:
 
 /*
  * This implementation of the session ticket callbacks includes key

@@ -44,7 +44,7 @@
  *     Springer Science & Business Media, 1 Aug 2000
  */
 
-extern (C):
+extern (C) @nogc nothrow:
 
 /**
  * \brief           Indicate if the Elliptic Curve Point module extension can

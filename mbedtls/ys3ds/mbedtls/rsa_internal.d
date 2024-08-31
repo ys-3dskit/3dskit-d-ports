@@ -42,7 +42,7 @@
 
 import ys3ds.mbedtls.bignum;
 
-extern (C):
+extern (C) @nogc nothrow:
 
 /**
  * \brief          Compute RSA prime moduli P, Q from public modulus N=PQ

@@ -11,7 +11,7 @@
 import ys3ds.mbedtls.pk;
 import ys3ds.mbedtls.md;
 
-extern (C):
+extern (C) @nogc nothrow:
 
 struct mbedtls_pk_info_t_
 {

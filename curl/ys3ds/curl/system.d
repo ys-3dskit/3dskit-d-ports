@@ -3,7 +3,7 @@ module ys3ds.curl.system;
 import core.stdc.config;
 import core.sys.horizon.sys.socket;
 
-extern (C):
+extern (C) @nogc nothrow:
 
 /***************************************************************************
  *                                  _   _ ____  _

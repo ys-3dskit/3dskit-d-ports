@@ -13,7 +13,7 @@
  *
  */
 
-extern (C):
+extern (C) @nogc nothrow:
 
 /* MBEDTLS_ERR_MD2_HW_ACCEL_FAILED is deprecated and should not be used. */
 /** MD2 hardware accelerator failed */

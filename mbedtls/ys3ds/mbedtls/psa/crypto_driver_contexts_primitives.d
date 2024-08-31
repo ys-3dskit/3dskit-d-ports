@@ -19,7 +19,7 @@ module ys3ds.mbedtls.psa.crypto_driver_contexts_primitives;
 
 import ys3ds.mbedtls.psa.crypto_builtin_primitives;
 
-extern (C):
+extern (C) @nogc nothrow:
 
 /*  Copyright The Mbed TLS Contributors
  *  SPDX-License-Identifier: Apache-2.0 OR GPL-2.0-or-later

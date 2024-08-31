@@ -19,6 +19,6 @@
  *  originated from Project Everest (https://project-everest.github.io/)
  */
 
-extern (C):
+extern (C) @nogc nothrow:
 
 /* __KREMLIB_H */

@@ -22,7 +22,7 @@
 
 import ys3ds.mbedtls.cipher;
 
-extern (C):
+extern (C) @nogc nothrow:
 
 enum mbedtls_nist_kw_mode_t
 {

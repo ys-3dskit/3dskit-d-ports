@@ -26,7 +26,7 @@ public import ys3ds.mbedtls.psa.crypto_types;
 public import ys3ds.mbedtls.psa.crypto_values;
 public import ys3ds.mbedtls.psa.crypto_sizes;
 
-extern (C):
+extern (C) @nogc nothrow:
 
 /* Include type definitions (psa_status_t, psa_algorithm_t,
  * psa_key_type_t, etc.) and macros to build and analyze values

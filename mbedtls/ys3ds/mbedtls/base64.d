@@ -8,7 +8,7 @@
  *  SPDX-License-Identifier: Apache-2.0 OR GPL-2.0-or-later
  */
 
-extern (C):
+extern (C) @nogc nothrow:
 
 /** Output buffer too small. */
 enum MBEDTLS_ERR_BASE64_BUFFER_TOO_SMALL = -0x002A;

@@ -20,7 +20,7 @@
  *          <https://ieeexplore.ieee.org/servlet/opac?punumber=4375278>.
  */
 
-extern (C):
+extern (C) @nogc nothrow:
 
 /*
  *  Copyright The Mbed TLS Contributors

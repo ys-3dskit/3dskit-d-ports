@@ -20,7 +20,7 @@
  *  This file is part of Mbed TLS (https://tls.mbed.org)
  */
 
-extern (C):
+extern (C) @nogc nothrow:
 
 alias bool_ = int;
 

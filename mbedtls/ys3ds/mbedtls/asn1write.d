@@ -11,7 +11,7 @@
 import ys3ds.mbedtls.bignum;
 import ys3ds.mbedtls.asn1;
 
-extern (C):
+extern (C) @nogc nothrow:
 
 /**
  * \brief           Write a length field in ASN.1 format.

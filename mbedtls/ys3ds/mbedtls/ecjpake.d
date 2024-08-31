@@ -12,7 +12,7 @@ import ys3ds.mbedtls.ecp;
 import ys3ds.mbedtls.bignum;
 import ys3ds.mbedtls.md;
 
-extern (C):
+extern (C) @nogc nothrow:
 
 /*
  * J-PAKE is a password-authenticated key exchange that allows deriving a

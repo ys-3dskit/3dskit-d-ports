@@ -4,7 +4,7 @@
 import core.stdc.stdio;
 import core.stdc.stdlib;
 
-extern (C):
+extern (C) @nogc nothrow:
 
 /******************************************************************************/
 /* Macros that KreMLin will generate.                                         */

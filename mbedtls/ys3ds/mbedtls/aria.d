@@ -16,7 +16,7 @@
 
 import ys3ds.mbedtls.platform_util;
 
-extern (C):
+extern (C) @nogc nothrow:
 
 enum MBEDTLS_ARIA_ENCRYPT = 1; /**< ARIA encryption. */
 enum MBEDTLS_ARIA_DECRYPT = 0; /**< ARIA decryption. */

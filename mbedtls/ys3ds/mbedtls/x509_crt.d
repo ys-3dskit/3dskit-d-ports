@@ -16,7 +16,7 @@ import ys3ds.mbedtls.bignum;
 import ys3ds.mbedtls.dhm;
 import ys3ds.mbedtls.asn1;
 
-extern (C):
+extern (C) @nogc nothrow:
 
 /**
  * \addtogroup x509_module

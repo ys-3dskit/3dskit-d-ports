@@ -11,7 +11,7 @@
  *  include/psa/crypto_config.h for PSA_WANT_XXX settings.
  */
 
-extern (C):
+extern (C) @nogc nothrow:
 
 /*
  *  Copyright The Mbed TLS Contributors

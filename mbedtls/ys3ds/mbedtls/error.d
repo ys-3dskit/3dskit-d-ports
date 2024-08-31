@@ -4,7 +4,7 @@
  * \brief Error to string translation
  */
 
-extern (C):
+extern (C) @nogc nothrow:
 
 /*
  *  Copyright The Mbed TLS Contributors

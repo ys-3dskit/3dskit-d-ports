@@ -28,7 +28,7 @@
 
 import ys3ds.mbedtls.aes;
 
-extern (C):
+extern (C) @nogc nothrow:
 
 /** The entropy source failed. */
 enum MBEDTLS_ERR_CTR_DRBG_ENTROPY_SOURCE_FAILED = -0x0034;

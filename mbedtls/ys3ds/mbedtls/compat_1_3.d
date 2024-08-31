@@ -9,7 +9,7 @@
  * \deprecated Use the new names directly instead
  */
 
-extern (C):
+extern (C) @nogc nothrow:
 
 /*
  *  Copyright The Mbed TLS Contributors

@@ -8,7 +8,7 @@ import ys3ds.mbedtls.platform_time;
 import ys3ds.mbedtls.ssl;
 import ys3ds.mbedtls.x509;
 
-extern (C):
+extern (C) @nogc nothrow:
 
 /*
  *  Copyright The Mbed TLS Contributors

@@ -5,7 +5,7 @@ module ys3ds.curl.mprintf;
 import core.stdc.stdio;
 import core.stdc.stdarg : va_list;
 
-extern (C):
+extern (C) @nogc nothrow:
 
 /***************************************************************************
  *                                  _   _ ____  _

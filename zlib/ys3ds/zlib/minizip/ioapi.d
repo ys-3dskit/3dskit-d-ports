@@ -24,7 +24,7 @@ import core.stdc.config;
 
 import ys3ds.zlib.zconf;
 
-extern (C):
+extern (C) @nogc nothrow:
 
 // Linux needs this to support file operation on files larger then 4+GB
 // But might need better if/def to select just the platforms that needs them.

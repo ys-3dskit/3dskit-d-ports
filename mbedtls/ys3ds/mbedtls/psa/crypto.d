@@ -16,7 +16,7 @@ public import ys3ds.mbedtls.psa.crypto_values;
 public import ys3ds.mbedtls.psa.crypto_struct;
 public import ys3ds.mbedtls.psa.crypto_extra;
 
-extern (C):
+extern (C) @nogc nothrow:
 
 /* This __DOXYGEN_ONLY__ block contains mock definitions for things that
  * must be defined in the crypto_platform.h header. These mock definitions

@@ -36,7 +36,7 @@ import core.sys.horizon.sys.types;
 
 import ys3ds.zlib.zconf;
 
-extern (C):
+extern (C) @nogc nothrow:
 
 enum ZLIB_VERSION = "1.3";
 enum ZLIB_VERNUM = 0x1300;

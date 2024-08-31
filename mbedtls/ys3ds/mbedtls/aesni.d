@@ -9,7 +9,7 @@
 
 import ys3ds.mbedtls.aes;
 
-extern (C):
+extern (C) @nogc nothrow:
 
 /*
  *  Copyright The Mbed TLS Contributors

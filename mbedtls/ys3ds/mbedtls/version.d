@@ -12,7 +12,7 @@
  * determine the version number of the Mbed TLS library used.
  */
 
-extern (C):
+extern (C) @nogc nothrow:
 
 /**
  * The version number x.y.z is split into three parts.

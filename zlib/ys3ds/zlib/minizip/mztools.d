@@ -8,7 +8,7 @@ module ys3ds.zlib.minizip.mztools;
 
 import ys3ds.zlib.zconf;
 
-extern (C):
+extern (C) @nogc nothrow:
 
 /* Repair a ZIP file (missing central directory)
    file: file to recover

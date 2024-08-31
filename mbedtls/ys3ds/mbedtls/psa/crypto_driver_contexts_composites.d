@@ -5,7 +5,7 @@ module ys3ds.mbedtls.psa.crypto_driver_contexts_composites;
 import ys3ds.mbedtls.psa.crypto_builtin_composites;
 import ys3ds.mbedtls.psa.crypto_driver_common;
 
-extern (C):
+extern (C) @nogc nothrow:
 
 union psa_driver_mac_context_t
 {

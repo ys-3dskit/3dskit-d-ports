@@ -14,7 +14,7 @@ import ys3ds.mbedtls.ecp;
 import ys3ds.mbedtls.md;
 import ys3ds.mbedtls.cipher;
 
-extern (C):
+extern (C) @nogc nothrow:
 
 /** OID is not found. */
 enum MBEDTLS_ERR_OID_NOT_FOUND = -0x002E;

@@ -10,7 +10,7 @@ import ys3ds.mbedtls.rsa;
 import ys3ds.mbedtls.ecp;
 import ys3ds.mbedtls.bignum;
 
-extern (C):
+extern (C) @nogc nothrow:
 
 /*
  *  Copyright The Mbed TLS Contributors

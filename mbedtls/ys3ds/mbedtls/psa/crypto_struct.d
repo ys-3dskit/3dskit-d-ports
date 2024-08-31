@@ -49,7 +49,7 @@ import ys3ds.mbedtls.psa.crypto_driver_contexts_composites;
 import ys3ds.mbedtls.psa.crypto;
 import ys3ds.mbedtls.cipher;
 
-extern (C):
+extern (C) @nogc nothrow:
 
 /*
  *  Copyright The Mbed TLS Contributors

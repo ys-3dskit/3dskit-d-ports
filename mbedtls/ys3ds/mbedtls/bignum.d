@@ -11,7 +11,7 @@
 import core.stdc.config;
 import core.stdc.stdio;
 
-extern (C):
+extern (C) @nogc nothrow:
 
 /** An error occurred while reading from or writing to a file. */
 enum MBEDTLS_ERR_MPI_FILE_IO_ERROR = -0x0002;

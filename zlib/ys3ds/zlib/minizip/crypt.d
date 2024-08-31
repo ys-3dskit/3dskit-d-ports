@@ -33,7 +33,7 @@ import core.stdc.config;
 
 import ys3ds.zlib.zconf;
 
-extern (C):
+extern (C) @nogc nothrow:
 
 pragma(inline, true)
 extern (D)

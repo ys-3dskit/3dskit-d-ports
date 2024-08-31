@@ -21,7 +21,7 @@
 
 import ys3ds.mbedtls.ecp;
 
-extern (C):
+extern (C) @nogc nothrow:
 
 enum MBEDTLS_ECP_TLS_CURVE25519 = 0x1d;
 enum MBEDTLS_X25519_KEY_SIZE_BYTES = 32;

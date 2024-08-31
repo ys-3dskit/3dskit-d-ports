@@ -20,7 +20,7 @@
 import ys3ds.mbedtls.chacha20;
 import ys3ds.mbedtls.poly1305;
 
-extern (C):
+extern (C) @nogc nothrow:
 
 /* for shared error codes */
 

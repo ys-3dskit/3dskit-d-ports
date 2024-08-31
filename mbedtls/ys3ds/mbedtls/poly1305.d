@@ -17,7 +17,7 @@
  *  SPDX-License-Identifier: Apache-2.0 OR GPL-2.0-or-later
  */
 
-extern (C):
+extern (C) @nogc nothrow:
 
 /** Invalid input parameter(s). */
 enum MBEDTLS_ERR_POLY1305_BAD_INPUT_DATA = -0x0057;

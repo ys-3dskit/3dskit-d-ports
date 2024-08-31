@@ -26,7 +26,7 @@
 
 import core.stdc.config;
 
-extern (C):
+extern (C) @nogc nothrow:
 
 /** Failed to open a socket. */
 enum MBEDTLS_ERR_NET_SOCKET_FAILED = -0x0042;

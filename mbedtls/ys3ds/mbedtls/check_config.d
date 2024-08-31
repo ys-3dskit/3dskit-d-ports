@@ -4,7 +4,7 @@
  * \brief Consistency checks for configuration options
  */
 
-extern (C):
+extern (C) @nogc nothrow:
 
 /*
  *  Copyright The Mbed TLS Contributors

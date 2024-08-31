@@ -15,7 +15,7 @@ import ys3ds.mbedtls.x509;
 import ys3ds.mbedtls.x509_crt;
 import ys3ds.mbedtls.ecdh;
 
-extern (C):
+extern (C) @nogc nothrow:
 
 extern (D) auto MBEDTLS_SSL_DEBUG_RET(T0, T1, T2)(auto ref T0 level, auto ref T1 text, auto ref T2 ret)
 {

@@ -7,7 +7,7 @@ import ys3ds.mbedtls.psa.crypto;
 import ys3ds.mbedtls.cmac;
 import ys3ds.mbedtls.cipher;
 
-extern (C):
+extern (C) @nogc nothrow:
 
 struct mbedtls_psa_hmac_operation_t
 {

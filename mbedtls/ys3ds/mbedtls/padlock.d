@@ -8,7 +8,7 @@
  *          functions; you must not call them directly.
  */
 
-extern (C):
+extern (C) @nogc nothrow:
 
 /*
  *  Copyright The Mbed TLS Contributors

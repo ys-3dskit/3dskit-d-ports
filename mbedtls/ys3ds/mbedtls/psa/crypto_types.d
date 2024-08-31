@@ -22,7 +22,7 @@ module ys3ds.mbedtls.psa.crypto_types;
 
 import ys3ds.mbedtls.psa.crypto_struct;
 
-extern (C):
+extern (C) @nogc nothrow:
 
 /* If MBEDTLS_PSA_CRYPTO_C is defined, make sure MBEDTLS_PSA_CRYPTO_CLIENT
  * is defined as well to include all PSA code.

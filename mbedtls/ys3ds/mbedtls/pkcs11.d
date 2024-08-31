@@ -6,7 +6,7 @@
  * \author Adriaan de Jong <dejong@fox-it.com>
  */
 
-extern (C):
+extern (C) @nogc nothrow:
 
 /*
  *  Copyright The Mbed TLS Contributors

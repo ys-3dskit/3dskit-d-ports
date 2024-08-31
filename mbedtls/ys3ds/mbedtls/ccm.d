@@ -34,7 +34,7 @@
 
 import ys3ds.mbedtls.cipher;
 
-extern (C):
+extern (C) @nogc nothrow:
 
 /** Bad input parameters to the function. */
 enum MBEDTLS_ERR_CCM_BAD_INPUT = -0x000D;
