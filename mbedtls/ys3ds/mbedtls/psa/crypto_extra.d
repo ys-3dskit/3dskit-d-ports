@@ -35,38 +35,47 @@ enum MBEDTLS_PSA_KEY_SLOT_COUNT = 32;
  * @{
  */
 
-/** \brief Declare the enrollment algorithm for a key.
- *
- * An operation on a key may indifferently use the algorithm set with
- * psa_set_key_algorithm() or with this function.
- *
- * \param[out] attributes       The attribute structure to write to.
- * \param alg2                  A second algorithm that the key may be used
- *                              for, in addition to the algorithm set with
- *                              psa_set_key_algorithm().
- *
- * \warning Setting an enrollment algorithm is not recommended, because
- *          using the same key with different algorithms can allow some
- *          attacks based on arithmetic relations between different
- *          computations made with the same key, or can escalate harmless
- *          side channels into exploitable ones. Use this function only
- *          if it is necessary to support a protocol for which it has been
- *          verified that the usage of the key with multiple algorithms
- *          is safe.
- */
-void psa_set_key_enrollment_algorithm (
-    psa_key_attributes_t* attributes,
-    psa_algorithm_t alg2);
 
-/** Retrieve the enrollment algorithm policy from key attributes.
- *
- * \param[in] attributes        The key attribute structure to query.
- *
- * \return The enrollment algorithm stored in the attribute structure.
- */
-psa_algorithm_t psa_get_key_enrollment_algorithm (
-    const(psa_key_attributes_t)* attributes);
+pragma(inline, true ) extern(D)
+{
+  /** \brief Declare the enrollment algorithm for a key.
+  *
+  * An operation on a key may indifferently use the algorithm set with
+  * psa_set_key_algorithm() or with this function.
+  *
+  * \param[out] attributes       The attribute structure to write to.
+  * \param alg2                  A second algorithm that the key may be used
+  *                              for, in addition to the algorithm set with
+  *                              psa_set_key_algorithm().
+  *
+  * \warning Setting an enrollment algorithm is not recommended, because
+  *          using the same key with different algorithms can allow some
+  *          attacks based on arithmetic relations between different
+  *          computations made with the same key, or can escalate harmless
+  *          side channels into exploitable ones. Use this function only
+  *          if it is necessary to support a protocol for which it has been
+  *          verified that the usage of the key with multiple algorithms
+  *          is safe.
+  */
+  void psa_set_key_enrollment_algorithm (
+      psa_key_attributes_t* attributes,
+      psa_algorithm_t alg2)
+  {
+    attributes.core.policy.alg2 = alg2;
+  }
 
+  /** Retrieve the enrollment algorithm policy from key attributes.
+  *
+  * \param[in] attributes        The key attribute structure to query.
+  *
+  * \return The enrollment algorithm stored in the attribute structure.
+  */
+  psa_algorithm_t psa_get_key_enrollment_algorithm (
+      const(psa_key_attributes_t)* attributes)
+  {
+    return attributes.core.policy.alg2;
+  }
+}
 /** Retrieve the slot number where a key is stored.
  *
  * A slot number is only defined for keys that are stored in a secure
@@ -558,9 +567,56 @@ extern (D) auto PSA_KEY_DOMAIN_PARAMETERS_SIZE(T0, T1)(auto ref T0 key_type, aut
  *                      (`PSA_ECC_FAMILY_xxx`).
  * \return              \c 0 on failure (\p grpid is not recognized).
  */
+pragma(inline, true) extern (D)
 psa_ecc_family_t mbedtls_ecc_group_to_psa (
     mbedtls_ecp_group_id grpid,
-    size_t* bits);
+    size_t* bits)
+{
+    switch (grpid) {
+        case MBEDTLS_ECP_DP_SECP192R1:
+            *bits = 192;
+            return PSA_ECC_FAMILY_SECP_R1;
+        case MBEDTLS_ECP_DP_SECP224R1:
+            *bits = 224;
+            return PSA_ECC_FAMILY_SECP_R1;
+        case MBEDTLS_ECP_DP_SECP256R1:
+            *bits = 256;
+            return PSA_ECC_FAMILY_SECP_R1;
+        case MBEDTLS_ECP_DP_SECP384R1:
+            *bits = 384;
+            return PSA_ECC_FAMILY_SECP_R1;
+        case MBEDTLS_ECP_DP_SECP521R1:
+            *bits = 521;
+            return PSA_ECC_FAMILY_SECP_R1;
+        case MBEDTLS_ECP_DP_BP256R1:
+            *bits = 256;
+            return PSA_ECC_FAMILY_BRAINPOOL_P_R1;
+        case MBEDTLS_ECP_DP_BP384R1:
+            *bits = 384;
+            return PSA_ECC_FAMILY_BRAINPOOL_P_R1;
+        case MBEDTLS_ECP_DP_BP512R1:
+            *bits = 512;
+            return PSA_ECC_FAMILY_BRAINPOOL_P_R1;
+        case MBEDTLS_ECP_DP_CURVE25519:
+            *bits = 255;
+            return PSA_ECC_FAMILY_MONTGOMERY;
+        case MBEDTLS_ECP_DP_SECP192K1:
+            *bits = 192;
+            return PSA_ECC_FAMILY_SECP_K1;
+        case MBEDTLS_ECP_DP_SECP224K1:
+            *bits = 224;
+            return PSA_ECC_FAMILY_SECP_K1;
+        case MBEDTLS_ECP_DP_SECP256K1:
+            *bits = 256;
+            return PSA_ECC_FAMILY_SECP_K1;
+        case MBEDTLS_ECP_DP_CURVE448:
+            *bits = 448;
+            return PSA_ECC_FAMILY_MONTGOMERY;
+        default:
+            *bits = 0;
+            return 0;
+    }
+}
 
 /** Convert an ECC curve identifier from the PSA encoding to Mbed TLS.
  *

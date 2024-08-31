@@ -2287,7 +2287,11 @@ extern (D) int MBEDTLS_SVC_KEY_ID_GET_OWNER_ID(T)(auto ref T id)
  * \param unused  Unused parameter.
  * \param key_id  Identifier of the key.
  */
-mbedtls_svc_key_id_t mbedtls_svc_key_id_make (uint unused, psa_key_id_t key_id);
+pragma(inline, true) extern(D)
+mbedtls_svc_key_id_t mbedtls_svc_key_id_make (uint unused, psa_key_id_t key_id)
+{
+  return key_id;
+}
 
 /** Compare two key identifiers.
  *
@@ -2296,9 +2300,13 @@ mbedtls_svc_key_id_t mbedtls_svc_key_id_make (uint unused, psa_key_id_t key_id);
  *
  * \return Non-zero if the two key identifier are equal, zero otherwise.
  */
+pragma(inline, true) extern(D)
 int mbedtls_svc_key_id_equal (
     mbedtls_svc_key_id_t id1,
-    mbedtls_svc_key_id_t id2);
+    mbedtls_svc_key_id_t id2)
+{
+  return id1 == id2;
+}
 
 /** Check whether a key identifier is null.
  *
@@ -2306,7 +2314,11 @@ int mbedtls_svc_key_id_equal (
  *
  * \return Non-zero if the key identifier is null, zero otherwise.
  */
-int mbedtls_svc_key_id_is_null (mbedtls_svc_key_id_t key);
+pragma(inline, true) extern(D)
+int mbedtls_svc_key_id_is_null (mbedtls_svc_key_id_t key)
+{
+  return key == 0;
+}
 
 /* MBEDTLS_PSA_CRYPTO_KEY_ID_ENCODES_OWNER */
 

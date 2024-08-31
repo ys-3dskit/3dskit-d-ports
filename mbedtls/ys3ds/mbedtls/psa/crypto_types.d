@@ -276,7 +276,7 @@ alias psa_key_id_t = uint;
  *       format.
  */
 
-alias mbedtls_svc_key_id_t = uint;
+alias mbedtls_svc_key_id_t = uint;psa_set_key_domain_parameters
 
 /* MBEDTLS_PSA_CRYPTO_KEY_ID_ENCODES_OWNER */
 /* Implementation-specific: The Mbed TLS library can be built as

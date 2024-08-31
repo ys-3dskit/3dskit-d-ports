@@ -27,6 +27,8 @@
 
 extern (C):
 
+pragma(inline, true):
+
 /* Include the Mbed TLS configuration file, the way Mbed TLS does it
  * in each of its header files. */
 

@@ -98,7 +98,11 @@ struct psa_cipher_operation_s
     psa_driver_cipher_context_t ctx;
 }
 
-psa_cipher_operation_s psa_cipher_operation_init ();
+pragma(inline, true) extern(D)
+psa_cipher_operation_s psa_cipher_operation_init ()
+{
+  return psa_cipher_operation_s.init;
+}
 
 /* Include the context definition for the compiled-in drivers for the composite
  * algorithms. */
@@ -123,7 +127,11 @@ struct psa_mac_operation_s
     psa_driver_mac_context_t ctx;
 }
 
-psa_mac_operation_s psa_mac_operation_init ();
+pragma(inline, true) extern(D)
+psa_mac_operation_s psa_mac_operation_init ()
+{
+  return psa_mac_operation_s.init;
+}
 
 struct psa_aead_operation_s
 {
@@ -149,7 +157,11 @@ struct psa_aead_operation_s
     _Anonymous_0 ctx;
 }
 
-psa_aead_operation_s psa_aead_operation_init ();
+pragma(inline, true) extern(D)
+psa_aead_operation_s psa_aead_operation_init ()
+{
+  return psa_aead_operation_s.init;
+}
 
 struct psa_hkdf_key_derivation_t
 {
@@ -234,7 +246,11 @@ struct psa_key_derivation_s
 }
 
 /* This only zeroes out the first byte in the union, the rest is unspecified. */
-psa_key_derivation_s psa_key_derivation_operation_init ();
+pragma(inline, true) extern(D)
+psa_key_derivation_s psa_key_derivation_operation_init ()
+{
+  return psa_key_derivation_s.init;
+}
 
 struct psa_key_policy_s
 {
@@ -245,7 +261,11 @@ struct psa_key_policy_s
 
 alias psa_key_policy_t = psa_key_policy_s;
 
-psa_key_policy_s psa_key_policy_init ();
+pragma(inline, true) extern(D)
+psa_key_policy_s psa_key_policy_init ()
+{
+  return psa_key_policy_s.init;
+}
 
 /* The type used internally for key sizes.
  * Public interfaces use size_t, but internally we use a smaller type. */
@@ -298,35 +318,92 @@ struct psa_key_attributes_s
     size_t domain_parameters_size;
 }
 
-psa_key_attributes_s psa_key_attributes_init ();
+pragma(inline, true) extern(D)
+psa_key_attributes_s psa_key_attributes_init ()
+{
+  return psa_key_attributes_s.init;
+}
 
+pragma(inline, true) extern(D)
 void psa_set_key_id (
     psa_key_attributes_t* attributes,
-    mbedtls_svc_key_id_t key);
+    mbedtls_svc_key_id_t key)
+{
+  auto lifetime = attributes.core.lifetime;
+  attributes.core.id = key;
 
-mbedtls_svc_key_id_t psa_get_key_id (const(psa_key_attributes_t)* attributes);
+  if (PSA_KEY_LIFETIME_IS_VOLATILE(lifetime))
+  {
+    attributes.core.lifetime =
+      PSA_KEY_LIFETIME_FROM_PERSISTENCE_AND_LOCATION(
+        PSA_KEY_LIFETIME_PERSISTENT,
+        PSA_KEY_LIFETIME_GET_LOCATION(lifetime)
+      );
+  }
+}
 
+pragma(inline, true) extern(D)
+mbedtls_svc_key_id_t psa_get_key_id (const(psa_key_attributes_t)* attributes)
+{
+  return attributes.core.id;
+}
+
+pragma(inline, true) extern(D)
 void psa_set_key_lifetime (
     psa_key_attributes_t* attributes,
-    psa_key_lifetime_t lifetime);
+    psa_key_lifetime_t lifetime)
+{
+  attributes.core.lifetime = lifetime;
+  if (PSA_KEY_LIFETIME_IS_VOLATILE(lifetime))
+    attributes.core.id = 0;
+}
 
+pragma(inline, true) extern(D)
 psa_key_lifetime_t psa_get_key_lifetime (
-    const(psa_key_attributes_t)* attributes);
+    const(psa_key_attributes_t)* attributes)
+{
+  return attribute.core.lifetime;
+}
 
-void psa_extend_key_usage_flags (psa_key_usage_t* usage_flags);
+pragma(inline, true) extern(D)
+void psa_extend_key_usage_flags (psa_key_usage_t* usage_flags)
+{
+  if (*usage_flags & PSA_KEY_USAGE_SIGN_HASH)
+    *usage_flags |= PSA_KEY_USAGE_SIGN_MESSAGE;
 
+  if (*usage_flags & PSA_KEY_USAGE_VERIFY_HASH)
+    *usage_flags |= PSA_KEY_USAGE_VERIFY_MESSAGE;
+}
+
+pragma(inline, true) extern(D)
 void psa_set_key_usage_flags (
     psa_key_attributes_t* attributes,
-    psa_key_usage_t usage_flags);
+    psa_key_usage_t usage_flags)
+{
+  psa_extend_key_usage_flags(&usage_flags);
+  attributes.core.policy.usage = usage_flags;
+}
 
+pragma(inline, true) extern(D)
 psa_key_usage_t psa_get_key_usage_flags (
-    const(psa_key_attributes_t)* attributes);
+    const(psa_key_attributes_t)* attributes)
+{
+  return attributes.core.policy.usage;
+}
 
+pragma(inline, true) extern(D)
 void psa_set_key_algorithm (
     psa_key_attributes_t* attributes,
-    psa_algorithm_t alg);
+    psa_algorithm_t alg)
+{
+  attributes.core.policy.alg = alg;
+}
 
-psa_algorithm_t psa_get_key_algorithm (const(psa_key_attributes_t)* attributes);
+pragma(inline, true) extern(D)
+psa_algorithm_t psa_get_key_algorithm (const(psa_key_attributes_t)* attributes)
+{
+  return attributes.core.policy.alg;
+}
 
 /* This function is declared in crypto_extra.h, which comes after this
  * header file, but we need the function here, so repeat the declaration. */
@@ -342,12 +419,36 @@ psa_status_t psa_set_key_domain_parameters (
  * Ignore any errors which may arise due to type requiring
  * non-default domain parameters, since this function can't
  * report errors. */
-void psa_set_key_type (psa_key_attributes_t* attributes, psa_key_type_t type);
+pragma(inline, true) extern(D)
+void psa_set_key_type (psa_key_attributes_t* attributes, psa_key_type_t type)
+{
+  if (attributes.domain_parameters == null)
+    attributes.core.type = type;
+  else
+  {
+    psa_set_key_domain_parameters(attributes, type, null, 0);
+  }
+}
 
-psa_key_type_t psa_get_key_type (const(psa_key_attributes_t)* attributes);
+pragma(inline, true) extern(D)
+psa_key_type_t psa_get_key_type (const(psa_key_attributes_t)* attributes)
+{
+  return attributes.core.type;
+}
 
-void psa_set_key_bits (psa_key_attributes_t* attributes, size_t bits);
+pragma(inline, true) extern(D)
+void psa_set_key_bits (psa_key_attributes_t* attributes, size_t bits)
+{
+  if (bits > PSA_MAX_KEY_BITS)
+    attributes.core.bits = PSA_KEY_BITS_TOO_LARGE;
+  else
+    attributes.core.bits = cast(psa_key_bits_t) bits;
+}
 
-size_t psa_get_key_bits (const(psa_key_attributes_t)* attributes);
+pragma(inline, true) extern(D)
+size_t psa_get_key_bits (const(psa_key_attributes_t)* attributes)
+{
+  return attributes.core.bits;
+}
 
 /* PSA_CRYPTO_STRUCT_H */
