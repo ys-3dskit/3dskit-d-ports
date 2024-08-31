@@ -11,6 +11,8 @@
  *  SPDX-License-Identifier: Apache-2.0 OR GPL-2.0-or-later
  */
 
+#include <stddef.h>
+
 #ifndef MBEDTLS_PSA_UTIL_H
 #define MBEDTLS_PSA_UTIL_H
 

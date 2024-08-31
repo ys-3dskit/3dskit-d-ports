@@ -19,50 +19,42 @@
  *  This file is part of Mbed TLS (https://tls.mbed.org)
  */
 
-#include <stddef.h>
-#include "mbedtls/ecdsa.h"
+extern (C):
 
-#ifndef MBEDTLS_X25519_H
-#define MBEDTLS_X25519_H
-
-#ifdef __cplusplus
-extern "C" {
-#endif
-
-#define MBEDTLS_ECP_TLS_CURVE25519 0x1d
-#define MBEDTLS_X25519_KEY_SIZE_BYTES 32
+enum MBEDTLS_ECP_TLS_CURVE25519 = 0x1d;
+enum MBEDTLS_X25519_KEY_SIZE_BYTES = 32;
 
 /**
  * Defines the source of the imported EC key.
  */
-typedef enum
+enum mbedtls_x25519_ecdh_side
 {
-    MBEDTLS_X25519_ECDH_OURS,   /**< Our key. */
-    MBEDTLS_X25519_ECDH_THEIRS, /**< The key of the peer. */
-} mbedtls_x25519_ecdh_side;
+    MBEDTLS_X25519_ECDH_OURS = 0, /**< Our key. */
+    MBEDTLS_X25519_ECDH_THEIRS = 1 /**< The key of the peer. */
+}
 
 /**
  * \brief           The x25519 context structure.
  */
-typedef struct
+struct mbedtls_x25519_context
 {
-  unsigned char our_secret[MBEDTLS_X25519_KEY_SIZE_BYTES];
-  unsigned char peer_point[MBEDTLS_X25519_KEY_SIZE_BYTES];
-} mbedtls_x25519_context;
+    ubyte[MBEDTLS_X25519_KEY_SIZE_BYTES] our_secret;
+    ubyte[MBEDTLS_X25519_KEY_SIZE_BYTES] peer_point;
+}
 
 /**
  * \brief           This function initializes an x25519 context.
  *
  * \param ctx       The x25519 context to initialize.
  */
-void mbedtls_x25519_init( mbedtls_x25519_context *ctx );
+void mbedtls_x25519_init (mbedtls_x25519_context* ctx);
 
 /**
  * \brief           This function frees a context.
  *
  * \param ctx       The context to free.
  */
-void mbedtls_x25519_free( mbedtls_x25519_context *ctx );
+void mbedtls_x25519_free (mbedtls_x25519_context* ctx);
 
 /**
  * \brief           This function generates a public key and a TLS
@@ -81,10 +73,13 @@ void mbedtls_x25519_free( mbedtls_x25519_context *ctx );
  * \return          \c 0 on success.
  * \return          An \c MBEDTLS_ERR_ECP_XXX error code on failure.
  */
-int mbedtls_x25519_make_params( mbedtls_x25519_context *ctx, size_t *olen,
-                        unsigned char *buf, size_t blen,
-                        int( *f_rng )(void *, unsigned char *, size_t),
-                        void *p_rng );
+int mbedtls_x25519_make_params (
+    mbedtls_x25519_context* ctx,
+    size_t* olen,
+    ubyte* buf,
+    size_t blen,
+    int function (void*, ubyte*, size_t) f_rng,
+    void* p_rng);
 
 /**
  * \brief           This function parses and processes a TLS ServerKeyExchange
@@ -99,8 +94,10 @@ int mbedtls_x25519_make_params( mbedtls_x25519_context *ctx, size_t *olen,
  * \return          An \c MBEDTLS_ERR_ECP_XXX error code on failure.
  *
  */
-int mbedtls_x25519_read_params( mbedtls_x25519_context *ctx,
-                        const unsigned char **buf, const unsigned char *end );
+int mbedtls_x25519_read_params (
+    mbedtls_x25519_context* ctx,
+    const(ubyte*)* buf,
+    const(ubyte)* end);
 
 /**
  * \brief           This function sets up an x25519 context from an EC key.
@@ -120,8 +117,10 @@ int mbedtls_x25519_read_params( mbedtls_x25519_context *ctx,
  * \return          An \c MBEDTLS_ERR_ECP_XXX error code on failure.
  *
  */
-int mbedtls_x25519_get_params( mbedtls_x25519_context *ctx, const mbedtls_ecp_keypair *key,
-                               mbedtls_x25519_ecdh_side side );
+int mbedtls_x25519_get_params (
+    mbedtls_x25519_context* ctx,
+    const(mbedtls_ecp_keypair)* key,
+    mbedtls_x25519_ecdh_side side);
 
 /**
  * \brief           This function derives and exports the shared secret.
@@ -140,10 +139,13 @@ int mbedtls_x25519_get_params( mbedtls_x25519_context *ctx, const mbedtls_ecp_ke
  * \return          \c 0 on success.
  * \return          An \c MBEDTLS_ERR_ECP_XXX error code on failure.
  */
-int mbedtls_x25519_calc_secret( mbedtls_x25519_context *ctx, size_t *olen,
-                        unsigned char *buf, size_t blen,
-                        int( *f_rng )(void *, unsigned char *, size_t),
-                        void *p_rng );
+int mbedtls_x25519_calc_secret (
+    mbedtls_x25519_context* ctx,
+    size_t* olen,
+    ubyte* buf,
+    size_t blen,
+    int function (void*, ubyte*, size_t) f_rng,
+    void* p_rng);
 
 /**
  * \brief           This function generates a public key and a TLS
@@ -163,10 +165,13 @@ int mbedtls_x25519_calc_secret( mbedtls_x25519_context *ctx, size_t *olen,
  * \return          \c 0 on success.
  * \return          An \c MBEDTLS_ERR_ECP_XXX error code on failure.
  */
-int mbedtls_x25519_make_public( mbedtls_x25519_context *ctx, size_t *olen,
-                        unsigned char *buf, size_t blen,
-                        int( *f_rng )(void *, unsigned char *, size_t),
-                        void *p_rng );
+int mbedtls_x25519_make_public (
+    mbedtls_x25519_context* ctx,
+    size_t* olen,
+    ubyte* buf,
+    size_t blen,
+    int function (void*, ubyte*, size_t) f_rng,
+    void* p_rng);
 
 /**
  * \brief       This function parses and processes a TLS ClientKeyExchange
@@ -183,11 +188,9 @@ int mbedtls_x25519_make_public( mbedtls_x25519_context *ctx, size_t *olen,
  * \return      \c 0 on success.
  * \return      An \c MBEDTLS_ERR_ECP_XXX error code on failure.
  */
-int mbedtls_x25519_read_public( mbedtls_x25519_context *ctx,
-                        const unsigned char *buf, size_t blen );
+int mbedtls_x25519_read_public (
+    mbedtls_x25519_context* ctx,
+    const(ubyte)* buf,
+    size_t blen);
 
-#ifdef __cplusplus
-}
-#endif
-
-#endif /* x25519.h */
+/* x25519.h */

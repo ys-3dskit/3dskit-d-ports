@@ -18,6 +18,10 @@
 #ifndef PSA_CRYPTO_COMPAT_H
 #define PSA_CRYPTO_COMPAT_H
 
+#include "crypto_values.h"
+#include "crypto.h"
+#include <stddef.h>
+
 #ifdef __cplusplus
 extern "C" {
 #endif

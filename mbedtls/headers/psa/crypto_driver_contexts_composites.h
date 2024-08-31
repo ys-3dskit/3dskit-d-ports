@@ -22,10 +22,10 @@
 #ifndef PSA_CRYPTO_DRIVER_CONTEXTS_COMPOSITES_H
 #define PSA_CRYPTO_DRIVER_CONTEXTS_COMPOSITES_H
 
-#include "psa/crypto_driver_common.h"
-
 /* Include the context structure definitions for the Mbed TLS software drivers */
-#include "psa/crypto_builtin_composites.h"
+#include "crypto_builtin_composites.h"
+
+#include "psa/crypto_driver_common.h"
 
 /* Include the context structure definitions for those drivers that were
  * declared during the autogeneration process. */
@@ -67,6 +67,7 @@ typedef mbedtls_psa_mac_operation_t
  * The union members are the driver's context structures, and the member names
  * are formatted as `'drivername'_ctx`. This allows for procedural generation
  * of both this file and the content of psa_crypto_driver_wrappers.c */
+
 
 typedef union {
     unsigned dummy; /* Make sure this union is always non-empty */

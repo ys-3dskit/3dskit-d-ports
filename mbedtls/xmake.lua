@@ -14,7 +14,7 @@ target("3ds-d-mbedtls")
 	add_rules("3ds")
 	set_toolchains("devkitarm")
 
-  add_files("ys3ds/**.d")
+  add_files("ys3ds/mbedtls/psa/**.d")
 
   add_packages("3dskit-dlang")
 

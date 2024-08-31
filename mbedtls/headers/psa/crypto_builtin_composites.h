@@ -21,7 +21,11 @@
 #ifndef PSA_CRYPTO_BUILTIN_COMPOSITES_H
 #define PSA_CRYPTO_BUILTIN_COMPOSITES_H
 
-#include <psa/crypto_driver_common.h>
+//#include "psa/crypto_driver_common.h"
+//#include "crypto_struct.h"
+#include "crypto_types.h"
+#include "crypto_sizes.h"
+#include "crypto_struct.h"
 
 /*
  * MAC multi-part operation definitions.
@@ -52,7 +56,7 @@ typedef struct {
 
 #include "mbedtls/cmac.h"
 
-typedef struct {
+typedef struct mbedtls_psa_mac_operation_t {
     psa_algorithm_t alg;
     union {
         unsigned dummy; /* Make the union non-empty even with no supported algorithms. */
