@@ -34,17 +34,45 @@ extern (C):
 /* Loads and stores. These avoid undefined behavior due to unaligned memory
  * accesses, via memcpy. */
 
-ushort load16 (ubyte* b);
+pragma(inline, true) extern(D)
+{
+  // these functions ugly af -- sink
+  ushort load16 (ubyte* b)
+  {
+    ushort x;
+    memcpy(&x, b, 2);
+    return x;
+  }
 
-uint load32 (ubyte* b);
+  uint load32 (ubyte* b)
+  {
+    uint x;
+    memcpy(&x, b, 4);
+    return x;
+  }
 
-ulong load64 (ubyte* b);
+  ulong load64 (ubyte* b)
+  {
+    ulong x;
+    memcpy(&x, b, 8);
+    return x;
+  }
 
-void store16 (ubyte* b, ushort i);
+  void store16 (ubyte* b, ushort i)
+  {
+    memcpy(b, &i, 2);
+  }
 
-void store32 (ubyte* b, uint i);
+  void store32 (ubyte* b, uint i)
+  {
+    memcpy(b, &i, 4);
+  }
 
-void store64 (ubyte* b, ulong i);
+  void store64 (ubyte* b, ulong i)
+  {
+    memcpy(b, &i, 8);
+  }
+}
 
 extern (D) auto load16_le(T)(auto ref T b)
 {
