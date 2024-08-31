@@ -8,6 +8,7 @@
  */
 
 public import ys3ds.mbedtls.everest.kremlin.internal.types : FStar_UInt128_t;
+import ys3ds.mbedtls.everest.kremlin.internal.types;
 
 extern (C):
 

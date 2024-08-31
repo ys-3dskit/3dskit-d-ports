@@ -17,6 +17,9 @@
  *  SPDX-License-Identifier: Apache-2.0 OR GPL-2.0-or-later
  */
 
+import ys3ds.mbedtls.chacha20;
+import ys3ds.mbedtls.poly1305;
+
 extern (C):
 
 /* for shared error codes */

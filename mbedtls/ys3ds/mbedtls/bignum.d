@@ -101,7 +101,7 @@ alias mbedtls_mpi_sint = c_long;
 alias mbedtls_mpi_uint = c_ulong;
 
 /* mbedtls_t_udbl defined as 128-bit unsigned int */
-alias mbedtls_t_udbl = <unimplemented>;
+struct mbedtls_t_udbl {ulong hi; ulong lo;};
 /* !MBEDTLS_NO_UDBL_DIVISION */
 
 /*

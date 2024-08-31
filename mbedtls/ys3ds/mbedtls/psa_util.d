@@ -11,6 +11,8 @@
  *  SPDX-License-Identifier: Apache-2.0 OR GPL-2.0-or-later
  */
 
+import ys3ds.mbedtls.ctr_drbg;
+
 extern (C):
 
 /* Translations for symmetric crypto. */
@@ -172,12 +174,12 @@ alias mbedtls_f_rng_t = int function (void* p_rng, ubyte* output, size_t output_
 
 /* !defined(MBEDTLS_PSA_CRYPTO_EXTERNAL_RNG) */
 
-alias mbedtls_psa_drbg_context_t = mbedtls_ctr_drbg_context_;
+alias mbedtls_psa_drbg_context_t = mbedtls_ctr_drbg_context;
 extern __gshared const int function () mbedtls_psa_get_random;
 
 extern __gshared mbedtls_psa_drbg_context_t* mbedtls_psa_random_state;
 
-enum MBEDTLS_PSA_RANDOM_STATE = mbedtls_psa_random_state;
+auto MBEDTLS_PSA_RANDOM_STATE() { return mbedtls_psa_random_state; }
 
 /* !defined(MBEDTLS_PSA_CRYPTO_EXTERNAL_RNG) */
 

@@ -10,6 +10,8 @@
 
 import core.stdc.config;
 
+import ys3ds.mbedtls.md;
+
 extern (C):
 
 /**

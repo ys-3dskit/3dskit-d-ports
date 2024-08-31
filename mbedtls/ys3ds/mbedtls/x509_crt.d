@@ -8,6 +8,14 @@
  *  SPDX-License-Identifier: Apache-2.0 OR GPL-2.0-or-later
  */
 
+import ys3ds.mbedtls.x509;
+import ys3ds.mbedtls.x509_crl;
+import ys3ds.mbedtls.pk;
+import ys3ds.mbedtls.md;
+import ys3ds.mbedtls.bignum;
+import ys3ds.mbedtls.dhm;
+import ys3ds.mbedtls.asn1;
+
 extern (C):
 
 /**

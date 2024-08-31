@@ -20,6 +20,8 @@
  *  SPDX-License-Identifier: Apache-2.0 OR GPL-2.0-or-later
  */
 
+import ys3ds.mbedtls.cipher;
+
 extern (C):
 
 enum mbedtls_nist_kw_mode_t

@@ -40,6 +40,8 @@
  *
  */
 
+import ys3ds.mbedtls.bignum;
+
 extern (C):
 
 /**

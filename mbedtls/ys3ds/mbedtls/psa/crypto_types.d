@@ -1,3 +1,5 @@
+module ys3ds.mbedtls.psa.crypto_types;
+
 /**
  * \file psa/crypto_types.h
  *
@@ -17,6 +19,8 @@
  *  Copyright The Mbed TLS Contributors
  *  SPDX-License-Identifier: Apache-2.0 OR GPL-2.0-or-later
  */
+
+import ys3ds.mbedtls.psa.crypto_struct;
 
 extern (C):
 
@@ -408,7 +412,7 @@ alias psa_key_usage_t = uint;
  *
  * Once a key has been created, it is impossible to change its attributes.
  */
-struct psa_key_attributes_s;
+//struct psa_key_attributes_s;
 alias psa_key_attributes_t = psa_key_attributes_s;
 
 /* Mbed TLS defines this type in crypto_types.h because it is also

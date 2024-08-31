@@ -9,6 +9,8 @@
  *  SPDX-License-Identifier: Apache-2.0 OR GPL-2.0-or-later
  */
 
+import ys3ds.mbedtls.platform_time;
+
 import core.stdc.time;
 
 extern (C):
@@ -101,7 +103,7 @@ extern (D) auto MBEDTLS_DEPRECATED_NUMERIC_CONSTANT(T)(auto ref T VAL)
  *        and functions that require a random generator, are considered
  *        return-check-critical.
  */
-enum MBEDTLS_CHECK_RETURN_CRITICAL = MBEDTLS_CHECK_RETURN;
+//enum MBEDTLS_CHECK_RETURN_CRITICAL = MBEDTLS_CHECK_RETURN;
 
 /** Ordinary-failure function
  *

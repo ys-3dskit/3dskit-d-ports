@@ -4,6 +4,22 @@
  * \brief Internal functions shared by the SSL modules
  */
 
+import ys3ds.mbedtls.ssl;
+import ys3ds.mbedtls.ssl_ciphersuites;
+import ys3ds.mbedtls.dhm;
+import ys3ds.mbedtls.ecdh;
+import ys3ds.mbedtls.ecp;
+import ys3ds.mbedtls.x509;
+import ys3ds.mbedtls.x509_crt;
+import ys3ds.mbedtls.x509_crl;
+import ys3ds.mbedtls.md5;
+import ys3ds.mbedtls.sha1;
+import ys3ds.mbedtls.sha256;
+import ys3ds.mbedtls.sha512;
+import ys3ds.mbedtls.md;
+import ys3ds.mbedtls.pk;
+import ys3ds.mbedtls.cipher;
+
 extern (C):
 
 /*
@@ -157,7 +173,7 @@ int mbedtls_ssl_chk_buf_ptr (const(ubyte)* cur, const(ubyte)* end, size_t need);
 /*
  * Abstraction for a grid of allowed signature-hash-algorithm pairs.
  */
-struct mbedtls_ssl_sig_hash_set_t_
+struct mbedtls_ssl_sig_hash_set_t
 {
     /* At the moment, we only need to remember a single suitable
      * hash algorithm per signature algorithm. As long as that's

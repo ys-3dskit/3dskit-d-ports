@@ -4,6 +4,10 @@
  * \brief SSL session cache implementation
  */
 
+import ys3ds.mbedtls.platform_time;
+import ys3ds.mbedtls.ssl;
+import ys3ds.mbedtls.x509;
+
 extern (C):
 
 /*

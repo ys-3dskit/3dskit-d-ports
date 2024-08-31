@@ -51,31 +51,31 @@ enum MBEDTLS_ERR_PLATFORM_FEATURE_UNSUPPORTED = -0x0072;
 
 /**< The default \c snprintf function to use.  */
 
-enum MBEDTLS_PLATFORM_STD_SNPRINTF = snprintf; /**< The default \c snprintf function to use.  */
+alias MBEDTLS_PLATFORM_STD_SNPRINTF = snprintf; /**< The default \c snprintf function to use.  */
 
 /**< The default \c vsnprintf function to use.  */
 
-enum MBEDTLS_PLATFORM_STD_VSNPRINTF = vsnprintf; /**< The default \c vsnprintf function to use.  */
+alias MBEDTLS_PLATFORM_STD_VSNPRINTF = vsnprintf; /**< The default \c vsnprintf function to use.  */
 
-enum MBEDTLS_PLATFORM_STD_PRINTF = printf; /**< The default \c printf function to use. */
+alias MBEDTLS_PLATFORM_STD_PRINTF = printf; /**< The default \c printf function to use. */
 
-enum MBEDTLS_PLATFORM_STD_FPRINTF = fprintf; /**< The default \c fprintf function to use. */
+alias MBEDTLS_PLATFORM_STD_FPRINTF = fprintf; /**< The default \c fprintf function to use. */
 
-enum MBEDTLS_PLATFORM_STD_CALLOC = calloc; /**< The default \c calloc function to use. */
+alias MBEDTLS_PLATFORM_STD_CALLOC = calloc; /**< The default \c calloc function to use. */
 
-enum MBEDTLS_PLATFORM_STD_FREE = free; /**< The default \c free function to use. */
+alias MBEDTLS_PLATFORM_STD_FREE = free; /**< The default \c free function to use. */
 
-enum MBEDTLS_PLATFORM_STD_EXIT = exit; /**< The default \c exit function to use. */
+alias MBEDTLS_PLATFORM_STD_EXIT = exit; /**< The default \c exit function to use. */
 
-enum MBEDTLS_PLATFORM_STD_TIME = time; /**< The default \c time function to use. */
+alias MBEDTLS_PLATFORM_STD_TIME = time; /**< The default \c time function to use. */
 
-enum MBEDTLS_PLATFORM_STD_EXIT_SUCCESS = EXIT_SUCCESS; /**< The default exit value to use. */
+alias MBEDTLS_PLATFORM_STD_EXIT_SUCCESS = EXIT_SUCCESS; /**< The default exit value to use. */
 
-enum MBEDTLS_PLATFORM_STD_EXIT_FAILURE = EXIT_FAILURE; /**< The default exit value to use. */
+alias MBEDTLS_PLATFORM_STD_EXIT_FAILURE = EXIT_FAILURE; /**< The default exit value to use. */
 
-enum MBEDTLS_PLATFORM_STD_NV_SEED_READ = mbedtls_platform_std_nv_seed_read;
+//alias MBEDTLS_PLATFORM_STD_NV_SEED_READ = mbedtls_platform_std_nv_seed_read;
 
-enum MBEDTLS_PLATFORM_STD_NV_SEED_WRITE = mbedtls_platform_std_nv_seed_write;
+//alias MBEDTLS_PLATFORM_STD_NV_SEED_WRITE = mbedtls_platform_std_nv_seed_write;
 
 enum MBEDTLS_PLATFORM_STD_NV_SEED_FILE = "seedfile";
 
@@ -110,8 +110,8 @@ enum MBEDTLS_PLATFORM_STD_NV_SEED_FILE = "seedfile";
 /* MBEDTLS_PLATFORM_FREE_MACRO && MBEDTLS_PLATFORM_CALLOC_MACRO */
 /* !MBEDTLS_PLATFORM_MEMORY */
 
-enum mbedtls_free = free;
-enum mbedtls_calloc = calloc;
+alias mbedtls_free = free;
+alias mbedtls_calloc = calloc;
 /* MBEDTLS_PLATFORM_MEMORY && !MBEDTLS_PLATFORM_{FREE,CALLOC}_MACRO */
 
 /*
@@ -130,7 +130,7 @@ enum mbedtls_calloc = calloc;
  * \return               \c 0.
  */
 
-enum mbedtls_fprintf = fprintf;
+alias mbedtls_fprintf = fprintf;
 /* MBEDTLS_PLATFORM_FPRINTF_MACRO */
 /* MBEDTLS_PLATFORM_FPRINTF_ALT */
 
@@ -150,7 +150,7 @@ enum mbedtls_fprintf = fprintf;
 
 /* !MBEDTLS_PLATFORM_PRINTF_ALT */
 
-enum mbedtls_printf = printf;
+alias mbedtls_printf = printf;
 /* MBEDTLS_PLATFORM_PRINTF_MACRO */
 /* MBEDTLS_PLATFORM_PRINTF_ALT */
 
@@ -177,7 +177,7 @@ enum mbedtls_printf = printf;
 
 /* MBEDTLS_PLATFORM_SNPRINTF_ALT */
 
-enum mbedtls_snprintf = MBEDTLS_PLATFORM_STD_SNPRINTF;
+alias mbedtls_snprintf = MBEDTLS_PLATFORM_STD_SNPRINTF;
 /* MBEDTLS_PLATFORM_SNPRINTF_MACRO */
 /* MBEDTLS_PLATFORM_SNPRINTF_ALT */
 
@@ -203,7 +203,7 @@ enum mbedtls_snprintf = MBEDTLS_PLATFORM_STD_SNPRINTF;
 
 /* MBEDTLS_PLATFORM_VSNPRINTF_ALT */
 
-enum mbedtls_vsnprintf = vsnprintf;
+alias mbedtls_vsnprintf = vsnprintf;
 /* MBEDTLS_PLATFORM_VSNPRINTF_MACRO */
 /* MBEDTLS_PLATFORM_VSNPRINTF_ALT */
 
@@ -221,7 +221,7 @@ enum mbedtls_vsnprintf = vsnprintf;
  * \return            \c 0 on success.
  */
 
-enum mbedtls_exit = exit;
+alias mbedtls_exit = exit;
 /* MBEDTLS_PLATFORM_EXIT_MACRO */
 /* MBEDTLS_PLATFORM_EXIT_ALT */
 

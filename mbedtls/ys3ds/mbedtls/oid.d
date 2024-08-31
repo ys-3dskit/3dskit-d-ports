@@ -8,6 +8,12 @@
  *  SPDX-License-Identifier: Apache-2.0 OR GPL-2.0-or-later
  */
 
+import ys3ds.mbedtls.asn1;
+import ys3ds.mbedtls.pk;
+import ys3ds.mbedtls.ecp;
+import ys3ds.mbedtls.md;
+import ys3ds.mbedtls.cipher;
+
 extern (C):
 
 /** OID is not found. */

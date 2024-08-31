@@ -7,6 +7,8 @@
  * KreMLin version: 916c37ac
  */
 
+import ys3ds.mbedtls.everest.kremlin.internal.compat;
+
 extern (C):
 
 extern __gshared Prims_int FStar_UInt64_n;

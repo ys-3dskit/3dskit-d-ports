@@ -5,6 +5,10 @@
  */
 
 import core.stdc.config;
+import ys3ds.mbedtls.md;
+import ys3ds.mbedtls.rsa;
+import ys3ds.mbedtls.ecp;
+import ys3ds.mbedtls.bignum;
 
 extern (C):
 
@@ -90,7 +94,7 @@ enum MBEDTLS_PK_SIGNATURE_MAX_SIZE = MBEDTLS_MPI_MAX_SIZE;
  * bignum module can do, but in the absence of any specific setting,
  * we use that (rsa_alt_sign_wrap in pk_wrap will check). */
 
-enum MBEDTLS_PK_SIGNATURE_MAX_SIZE = MBEDTLS_MPI_MAX_SIZE;
+//enum MBEDTLS_PK_SIGNATURE_MAX_SIZE = MBEDTLS_MPI_MAX_SIZE;
 
 /* For ECDSA, the ecdsa module exports a constant for the maximum
  * signature size. */

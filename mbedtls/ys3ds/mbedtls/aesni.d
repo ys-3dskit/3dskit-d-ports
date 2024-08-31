@@ -7,6 +7,8 @@
  *          functions; you must not call them directly.
  */
 
+import ys3ds.mbedtls.aes;
+
 extern (C):
 
 /*

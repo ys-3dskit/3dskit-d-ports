@@ -8,6 +8,11 @@
  *  SPDX-License-Identifier: Apache-2.0 OR GPL-2.0-or-later
  */
 
+import ys3ds.mbedtls.oid;
+import ys3ds.mbedtls.asn1;
+import ys3ds.mbedtls.md;
+import ys3ds.mbedtls.pk;
+
 extern (C):
 
 /**
@@ -197,23 +202,23 @@ enum MBEDTLS_X509_MAX_DN_NAME_SIZE = 256; /**< Maximum value size of a DN entry 
 /**
  * Type-length-value structure that allows for ASN1 using DER.
  */
-alias mbedtls_x509_buf = mbedtls_asn1_buf_;
+alias mbedtls_x509_buf = mbedtls_asn1_buf;
 
 /**
  * Container for ASN1 bit strings.
  */
-alias mbedtls_x509_bitstring = mbedtls_asn1_bitstring_;
+alias mbedtls_x509_bitstring = mbedtls_asn1_bitstring;
 
 /**
  * Container for ASN1 named information objects.
  * It allows for Relative Distinguished Names (e.g. cn=localhost,ou=code,etc.).
  */
-alias mbedtls_x509_name = mbedtls_asn1_named_data_;
+alias mbedtls_x509_name = mbedtls_asn1_named_data;
 
 /**
  * Container for a sequence of ASN.1 items
  */
-alias mbedtls_x509_sequence = mbedtls_asn1_sequence_;
+alias mbedtls_x509_sequence = mbedtls_asn1_sequence;
 
 /** Container for date and time (precision in seconds). */
 struct mbedtls_x509_time

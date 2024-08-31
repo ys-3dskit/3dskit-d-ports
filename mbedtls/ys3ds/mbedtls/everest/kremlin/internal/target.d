@@ -13,20 +13,20 @@ extern (C):
 /* For "bare" targets that do not have a C stdlib, the user might want to use
  * [-add-early-include '"mydefinitions.h"'] and override these. */
 
-enum KRML_HOST_PRINTF = printf;
+alias KRML_HOST_PRINTF = printf;
 
-enum KRML_HOST_EXIT = exit;
+alias KRML_HOST_EXIT = exit;
 
-enum KRML_HOST_MALLOC = malloc;
+alias KRML_HOST_MALLOC = malloc;
 
-enum KRML_HOST_CALLOC = calloc;
+alias KRML_HOST_CALLOC = calloc;
 
-enum KRML_HOST_FREE = free;
+alias KRML_HOST_FREE = free;
 
 /* Prims_nat not yet in scope */
 int krml_time ();
 
-enum KRML_HOST_TIME = krml_time;
+alias KRML_HOST_TIME = krml_time;
 
 /* In statement position, exiting is easy. */
 
@@ -38,7 +38,7 @@ enum KRML_HOST_TIME = krml_time;
  * *elements*. Do an ugly, run-time check (some of which KreMLin can eliminate).
  */
 
-enum _KRML_CHECK_SIZE_PRAGMA = _Pragma("GCC diagnostic ignored \"-Wtype-limits\"");
+//enum _KRML_CHECK_SIZE_PRAGMA = _Pragma("GCC diagnostic ignored \"-Wtype-limits\"");
 
 alias KRML_HOST_SNPRINTF = snprintf;
 

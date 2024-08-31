@@ -34,7 +34,7 @@ alias mbedtls_time_t = c_long;
  * \return              0
  */
 
-enum mbedtls_time = time;
+alias mbedtls_time = time;
 /* MBEDTLS_PLATFORM_TIME_MACRO */
 /* MBEDTLS_PLATFORM_TIME_ALT */
 

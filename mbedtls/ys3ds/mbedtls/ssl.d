@@ -4,6 +4,15 @@
  * \brief SSL/TLS functions.
  */
 
+import ys3ds.mbedtls.x509;
+import ys3ds.mbedtls.x509_crt;
+import ys3ds.mbedtls.x509_crl;
+import ys3ds.mbedtls.pk;
+import ys3ds.mbedtls.dhm;
+import ys3ds.mbedtls.bignum;
+import ys3ds.mbedtls.platform_time;
+import ys3ds.mbedtls.ecp;
+
 extern (C):
 
 /*

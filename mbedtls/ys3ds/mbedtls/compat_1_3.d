@@ -1,3 +1,5 @@
+// we dont need compat
+/+
 /**
  * \file compat-1.3.h
  *
@@ -2139,3 +2141,4 @@ enum xtea_setup = mbedtls_xtea_setup;
 
 /* compat-1.3.h */
 /* MBEDTLS_DEPRECATED_REMOVED */
++/

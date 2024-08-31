@@ -19,6 +19,9 @@
  *  This file is part of Mbed TLS (https://tls.mbed.org).
  */
 
+import ys3ds.mbedtls.everest.x25519;
+import ys3ds.mbedtls.ecp;
+
 extern (C):
 
 /**

@@ -15,6 +15,10 @@
  *  SPDX-License-Identifier: Apache-2.0 OR GPL-2.0-or-later
  */
 
+import ys3ds.mbedtls.ecp;
+import ys3ds.mbedtls.bignum;
+import ys3ds.mbedtls.md;
+
 extern (C):
 
 /**
@@ -34,10 +38,15 @@ extern (C):
  *
  * For each of r and s, the value (V) may include an extra initial "0" bit.
  */
-
-/*T,L of SEQUENCE*/
-/*T,L of r,s*/
-/*V of r,s*/
+pragma(inline, true)
+extern (D) auto MBEDTLS_ECDSA_MAX_SIG_LEN(T)(auto ref T bits)
+{
+  return (
+    /*T,L of SEQUENCE*/ (bits >= 61 * 8 ? 3 : 2) +
+    /*T,L of r,s*/ 2 * ((bits >= 127 * 8 ? 3 : 2) +
+    /*V of r,s*/        (bits + 8) / 8)
+  );
+}
 
 /** The maximal size of an ECDSA signature in Bytes. */
 enum MBEDTLS_ECDSA_MAX_LEN = MBEDTLS_ECDSA_MAX_SIG_LEN(MBEDTLS_ECP_MAX_BITS);
@@ -49,7 +58,7 @@ enum MBEDTLS_ECDSA_MAX_LEN = MBEDTLS_ECDSA_MAX_SIG_LEN(MBEDTLS_ECP_MAX_BITS);
  *                  ECDSA context is not supported; objects of this type
  *                  should not be shared between multiple threads.
  */
-alias mbedtls_ecdsa_context = mbedtls_ecp_keypair_;
+alias mbedtls_ecdsa_context = mbedtls_ecp_keypair;
 
 /**
  * \brief           Internal restart context for ecdsa_verify()

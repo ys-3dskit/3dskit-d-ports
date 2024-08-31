@@ -12,13 +12,15 @@
  *  SPDX-License-Identifier: Apache-2.0 OR GPL-2.0-or-later
  */
 
+import ys3ds.mbedtls.md;
+
 extern (C):
 
 /**
  * Message digest information.
  * Allows message digest functions to be called in a generic way.
  */
-struct mbedtls_md_info_t_
+struct mbedtls_md_info_t
 {
     /** Name of the message digest */
     const(char)* name;
