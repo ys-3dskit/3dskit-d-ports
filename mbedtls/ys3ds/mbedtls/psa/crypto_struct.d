@@ -362,7 +362,7 @@ pragma(inline, true) extern(D)
 psa_key_lifetime_t psa_get_key_lifetime (
     const(psa_key_attributes_t)* attributes)
 {
-  return attribute.core.lifetime;
+  return attributes.core.lifetime;
 }
 
 pragma(inline, true) extern(D)

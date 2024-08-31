@@ -572,7 +572,7 @@ psa_ecc_family_t mbedtls_ecc_group_to_psa (
     mbedtls_ecp_group_id grpid,
     size_t* bits)
 {
-    switch (grpid) {
+    switch (grpid) with (mbedtls_ecp_group_id) {
         case MBEDTLS_ECP_DP_SECP192R1:
             *bits = 192;
             return PSA_ECC_FAMILY_SECP_R1;

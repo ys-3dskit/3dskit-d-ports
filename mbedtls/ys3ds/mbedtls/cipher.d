@@ -476,8 +476,8 @@ int mbedtls_cipher_setup (
 pragma(inline, true) extern(D)
 uint mbedtls_cipher_get_block_size (const(mbedtls_cipher_context_t)* ctx)
 {
-  MBEDTLS_INTERNAL_VALIDATE_RET(ctx != null, 0);
-  if (ctx.cipher_info == null)
+  //MBEDTLS_INTERNAL_VALIDATE_RET(ctx != null, 0);
+  if (!ctx || ctx.cipher_info == null)
     return 0;
 
   return ctx.cipher_info.block_size;
@@ -494,11 +494,11 @@ uint mbedtls_cipher_get_block_size (const(mbedtls_cipher_context_t)* ctx)
  */
 pragma(inline, true) extern(D)
 mbedtls_cipher_mode_t mbedtls_cipher_get_cipher_mode (
-    const(mbedtls_cipher_context_t)* ctx);
+    const(mbedtls_cipher_context_t)* ctx)
 {
-  MBEDTLS_INTERNAL_VALIDATE_RET(ctx != null, MBEDTLS_MODE_NONE);
-  if (ctx.cipher_info == null)
-    return MBEDTLS_MODE_NONE;
+  //MBEDTLS_INTERNAL_VALIDATE_RET(ctx != null, MBEDTLS_MODE_NONE);
+  if (!ctx || ctx.cipher_info == null)
+    return mbedtls_cipher_mode_t.MBEDTLS_MODE_NONE;
 
   return ctx.cipher_info.mode;
 }
@@ -516,8 +516,8 @@ mbedtls_cipher_mode_t mbedtls_cipher_get_cipher_mode (
 pragma(inline, true) extern(D)
 int mbedtls_cipher_get_iv_size (const(mbedtls_cipher_context_t)* ctx)
 {
-  MBEDTLS_INTERNAL_VALIDATE_RET(ctx != null, 0);
-  if (ctx.cipher_info == null)
+  //MBEDTLS_INTERNAL_VALIDATE_RET(ctx != null, 0);
+  if (!ctx || ctx.cipher_info == null)
     return 0;
 
   return ctx.cipher_info.iv_size;
@@ -535,9 +535,9 @@ pragma(inline, true) extern(D)
 mbedtls_cipher_type_t mbedtls_cipher_get_type (
     const(mbedtls_cipher_context_t)* ctx)
 {
-  MBEDTLS_INTERNAL_VALIDATE_RET(ctx != null, MBEDTLS_CIPHER_NONE);
-  if (ctx.cipher_info == null)
-    return MBEDTLS_CIPHER_NONE;
+  //MBEDTLS_INTERNAL_VALIDATE_RET(ctx != null, MBEDTLS_CIPHER_NONE);
+  if (!ctx || ctx.cipher_info == null)
+    return mbedtls_cipher_type_t.MBEDTLS_CIPHER_NONE;
 
   return ctx.cipher_info.type;
 }
@@ -554,9 +554,9 @@ mbedtls_cipher_type_t mbedtls_cipher_get_type (
 pragma(inline, true) extern(D)
 const(char)* mbedtls_cipher_get_name (const(mbedtls_cipher_context_t)* ctx)
 {
-  MBEDTLS_INTERNAL_VALIDATE_RET(ctx != null, 0);
-  if (ctx.cipher_info == null)
-    return 0;
+  //MBEDTLS_INTERNAL_VALIDATE_RET(ctx != null, 0);
+  if (!ctx || ctx.cipher_info == null)
+    return null;
 
   return ctx.cipher_info.name;
 }
@@ -573,8 +573,8 @@ const(char)* mbedtls_cipher_get_name (const(mbedtls_cipher_context_t)* ctx)
 pragma(inline, true) extern(D)
 int mbedtls_cipher_get_key_bitlen (const(mbedtls_cipher_context_t)* ctx)
 {
-  MBEDTLS_INTERNAL_VALIDATE_RET(ctx != null, MBEDTLS_KEY_LENGTH_NONE);
-  if (ctx.cipher_info == null)
+  //MBEDTLS_INTERNAL_VALIDATE_RET(ctx != null, MBEDTLS_KEY_LENGTH_NONE);
+  if (!ctx || ctx.cipher_info == null)
     return MBEDTLS_KEY_LENGTH_NONE;
 
   return cast(int) ctx.cipher_info.key_bitlen;
@@ -592,9 +592,9 @@ pragma(inline, true) extern(D)
 mbedtls_operation_t mbedtls_cipher_get_operation (
     const(mbedtls_cipher_context_t)* ctx)
 {
-  MBEDTLS_INTERNAL_VALIDATE_RET(ctx != null, MBEDTLS_OPERATION_NONE);
-  if (ctx.cipher_info == null)
-    return MBEDTLS_OPERATION_NONE;
+  //MBEDTLS_INTERNAL_VALIDATE_RET(ctx != null, MBEDTLS_OPERATION_NONE);
+  if (!ctx || ctx.cipher_info == null)
+    return mbedtls_operation_t.MBEDTLS_OPERATION_NONE;
 
   return ctx.operation;
 }

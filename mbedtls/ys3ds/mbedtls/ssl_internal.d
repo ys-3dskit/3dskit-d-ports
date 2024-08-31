@@ -1,3 +1,5 @@
+module ys3ds.mbedtls.ssl_internal;
+
 /**
  * \file ssl_internal.h
  *
@@ -240,7 +242,7 @@ struct mbedtls_ssl_key_set
 /*
  * This structure contains the parameters only needed during handshake.
  */
-struct mbedtls_ssl_handshake_params_
+struct mbedtls_ssl_handshake_params
 {
     /*
      * Handshake specific crypto variables
@@ -522,7 +524,7 @@ struct mbedtls_ssl_handshake_params_
  *   in other transformations.
  *
  */
-struct mbedtls_ssl_transform_
+struct mbedtls_ssl_transform
 {
     /*
      * Session specific crypto layer
@@ -626,7 +628,7 @@ struct mbedtls_record
 /*
  * List of certificate + private key pairs
  */
-struct mbedtls_ssl_key_cert_
+struct mbedtls_ssl_key_cert
 {
     mbedtls_x509_crt* cert; /*!< cert                       */
     mbedtls_pk_context* key; /*!< private key                */
@@ -638,7 +640,7 @@ struct mbedtls_ssl_key_cert_
 /*
  * List of handshake messages kept around for resending
  */
-struct mbedtls_ssl_flight_item_
+struct mbedtls_ssl_flight_item
 {
     ubyte* p; /*!< message, including handshake headers   */
     size_t len; /*!< length of p                            */
@@ -666,7 +668,7 @@ void mbedtls_ssl_sig_hash_set_const_hash (
 pragma(inline, true) extern(D)
 void mbedtls_ssl_sig_hash_set_init (mbedtls_ssl_sig_hash_set_t* set)
 {
-  mbedtls_ssl_sig_hash_set_const_hash(set, MBEDTLS_MD_NONE);
+  mbedtls_ssl_sig_hash_set_const_hash(set, mbedtls_md_type_t.MBEDTLS_MD_NONE);
 }
 
 /* MBEDTLS_SSL_PROTO_TLS1_2) &&
@@ -810,10 +812,10 @@ int mbedtls_ssl_psk_derive_premaster (
 pragma(inline, true) extern(D)
 int mbedtls_ssl_get_psk (
     const(mbedtls_ssl_context)* ssl,
-    const(ubyte*)* psk,
+    const(ubyte)** psk,
     size_t* psk_len)
 {
-  if (ssl.handshake.psk != null && ssl.handshke.psk_len > 0)
+  if (ssl.handshake.psk != null && ssl.handshake.psk_len > 0)
   {
     *psk = ssl.handshake.psk;
     *psk_len = ssl.handshake.psk_len;
@@ -873,9 +875,9 @@ pragma(inline, true) extern(D)
     if (ssl.handshake != null && ssl.handshake.key_cert != null)
       key_cert = ssl.handshake.key_cert;
     else
-      key_cert = ssl.conf.key_cert;
+      key_cert = cast(mbedtls_ssl_key_cert*) ssl.conf.key_cert;
 
-    return key_cert == null ? null ? key_cert.key;
+    return key_cert == null ? null : key_cert.key;
   }
 
   mbedtls_x509_crt* mbedtls_ssl_own_cert (mbedtls_ssl_context* ssl)
@@ -885,9 +887,9 @@ pragma(inline, true) extern(D)
     if (ssl.handshake != null && ssl.handshake.key_cert != null)
       key_cert = ssl.handshake.key_cert;
     else
-      key_cert = ssl.conf.key_cert;
+      key_cert = cast(mbedtls_ssl_key_cert*) ssl.conf.key_cert;
 
-    return key_cert == null ? null ? key_cert.cert;
+    return key_cert == null ? null : key_cert.cert;
   }
 }
 /*
@@ -922,7 +924,7 @@ pragma(inline, true) extern(D)
 {
   size_t mbedtls_ssl_in_hdr_len (const(mbedtls_ssl_context)* ssl)
   {
-    if (ssl.conf.transport == MBDETLS_SSL_TRANSPORT_DATAGRAM)
+    if (ssl.conf.transport == MBEDTLS_SSL_TRANSPORT_DATAGRAM)
       return 13;
     else
       return 5;

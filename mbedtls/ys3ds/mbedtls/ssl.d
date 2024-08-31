@@ -1,3 +1,5 @@
+module ys3ds.mbedtls.ssl;
+
 /**
  * \file ssl.h
  *
@@ -12,6 +14,8 @@ import ys3ds.mbedtls.dhm;
 import ys3ds.mbedtls.bignum;
 import ys3ds.mbedtls.platform_time;
 import ys3ds.mbedtls.ecp;
+
+import ys3ds.mbedtls.ssl_internal;
 
 extern (C):
 
@@ -604,12 +608,12 @@ alias mbedtls_ssl_get_timer_t = int function (void* ctx);
 /* Defined below */
 
 /* Defined in ssl_internal.h */
-struct mbedtls_ssl_transform;
+/* struct mbedtls_ssl_transform;
 struct mbedtls_ssl_handshake_params;
 struct mbedtls_ssl_sig_hash_set_t;
 struct mbedtls_ssl_key_cert;
 
-struct mbedtls_ssl_flight_item;
+struct mbedtls_ssl_flight_item; */
 
 /**
  * \brief           Callback type: start external signature operation.

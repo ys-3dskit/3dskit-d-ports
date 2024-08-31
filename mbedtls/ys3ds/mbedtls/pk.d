@@ -624,7 +624,7 @@ mbedtls_pk_type_t mbedtls_pk_get_type (const(mbedtls_pk_context)* ctx);
 pragma(inline, true) extern(D)
 mbedtls_rsa_context* mbedtls_pk_rsa (const mbedtls_pk_context pk)
 {
-  switch (mbedtls_pk_get_type(&pk))
+  switch (mbedtls_pk_get_type(&pk)) with (mbedtls_pk_type_t)
   {
     case MBEDTLS_PK_RSA:
       return cast(mbedtls_rsa_context*) pk.pk_ctx;
@@ -649,7 +649,7 @@ mbedtls_rsa_context* mbedtls_pk_rsa (const mbedtls_pk_context pk)
 pragma(inline, true) extern(D)
 mbedtls_ecp_keypair* mbedtls_pk_ec (const mbedtls_pk_context pk)
 {
-  switch (mbedtls_pk_get_type(&pk))
+  switch (mbedtls_pk_get_type(&pk)) with (mbedtls_pk_type_t)
   {
     case MBEDTLS_PK_ECKEY:
     case MBEDTLS_PK_ECKEY_DH:

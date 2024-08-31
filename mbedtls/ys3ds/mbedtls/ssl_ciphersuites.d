@@ -340,7 +340,7 @@ pragma(inline, true) extern(D)
 {
   int mbedtls_ssl_ciphersuite_has_pfs (const(mbedtls_ssl_ciphersuite_t)* info)
   {
-    switch (info.key_exchange) {
+    switch (info.key_exchange) with (mbedtls_key_exchange_type_t) {
         case MBEDTLS_KEY_EXCHANGE_DHE_RSA:
         case MBEDTLS_KEY_EXCHANGE_DHE_PSK:
         case MBEDTLS_KEY_EXCHANGE_ECDHE_RSA:
@@ -357,7 +357,7 @@ pragma(inline, true) extern(D)
 
   int mbedtls_ssl_ciphersuite_no_pfs (const(mbedtls_ssl_ciphersuite_t)* info)
   {
-      switch (info.key_exchange) {
+      switch (info.key_exchange) with (mbedtls_key_exchange_type_t) {
           case MBEDTLS_KEY_EXCHANGE_ECDH_RSA:
           case MBEDTLS_KEY_EXCHANGE_ECDH_ECDSA:
           case MBEDTLS_KEY_EXCHANGE_RSA:
@@ -373,7 +373,7 @@ pragma(inline, true) extern(D)
 
   int mbedtls_ssl_ciphersuite_uses_ecdh (const(mbedtls_ssl_ciphersuite_t)* info)
   {
-      switch (info.key_exchange) {
+      switch (info.key_exchange) with (mbedtls_key_exchange_type_t) {
           case MBEDTLS_KEY_EXCHANGE_ECDH_RSA:
           case MBEDTLS_KEY_EXCHANGE_ECDH_ECDSA:
               return 1;
@@ -387,7 +387,7 @@ pragma(inline, true) extern(D)
   int mbedtls_ssl_ciphersuite_cert_req_allowed (
       const(mbedtls_ssl_ciphersuite_t)* info)
   {
-      switch (info.key_exchange) {
+      switch (info.key_exchange) with (mbedtls_key_exchange_type_t) {
           case MBEDTLS_KEY_EXCHANGE_RSA:
           case MBEDTLS_KEY_EXCHANGE_DHE_RSA:
           case MBEDTLS_KEY_EXCHANGE_ECDH_RSA:
@@ -404,7 +404,7 @@ pragma(inline, true) extern(D)
   int mbedtls_ssl_ciphersuite_uses_srv_cert (
       const(mbedtls_ssl_ciphersuite_t)* info)
   {
-      switch (info.key_exchange) {
+      switch (info.key_exchange) with (mbedtls_key_exchange_type_t) {
           case MBEDTLS_KEY_EXCHANGE_RSA:
           case MBEDTLS_KEY_EXCHANGE_RSA_PSK:
           case MBEDTLS_KEY_EXCHANGE_DHE_RSA:
@@ -421,7 +421,7 @@ pragma(inline, true) extern(D)
 
   int mbedtls_ssl_ciphersuite_uses_dhe (const(mbedtls_ssl_ciphersuite_t)* info)
   {
-      switch (info.key_exchange) {
+      switch (info.key_exchange) with (mbedtls_key_exchange_type_t) {
           case MBEDTLS_KEY_EXCHANGE_DHE_RSA:
           case MBEDTLS_KEY_EXCHANGE_DHE_PSK:
               return 1;
@@ -434,7 +434,7 @@ pragma(inline, true) extern(D)
 
   int mbedtls_ssl_ciphersuite_uses_ecdhe (const(mbedtls_ssl_ciphersuite_t)* info)
   {
-      switch (info.key_exchange) {
+      switch (info.key_exchange) with (mbedtls_key_exchange_type_t) {
           case MBEDTLS_KEY_EXCHANGE_ECDHE_ECDSA:
           case MBEDTLS_KEY_EXCHANGE_ECDHE_RSA:
           case MBEDTLS_KEY_EXCHANGE_ECDHE_PSK:
@@ -449,7 +449,7 @@ pragma(inline, true) extern(D)
   int mbedtls_ssl_ciphersuite_uses_server_signature (
       const(mbedtls_ssl_ciphersuite_t)* info)
   {
-      switch (info.key_exchange) {
+      switch (info.key_exchange) with (mbedtls_key_exchange_type_t) {
           case MBEDTLS_KEY_EXCHANGE_DHE_RSA:
           case MBEDTLS_KEY_EXCHANGE_ECDHE_RSA:
           case MBEDTLS_KEY_EXCHANGE_ECDHE_ECDSA:
