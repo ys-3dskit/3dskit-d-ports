@@ -36,8 +36,8 @@ alias FStar_Int63_t_ = c_long;
 
 alias FStar_Float_float = double;
 alias FStar_Char_char = uint;
-alias FStar_IO_fd_read = _IO_FILE*;
-alias FStar_IO_fd_write = _IO_FILE*;
+alias FStar_IO_fd_read = /* _IO_ */FILE*;
+alias FStar_IO_fd_write = /* _IO_ */FILE*;
 
 alias FStar_Dyn_dyn = void*;
 
@@ -45,7 +45,7 @@ alias C_String_t = const(char)*;
 alias C_String_t_ = const(char)*;
 
 alias exit_code = int;
-alias channel = _IO_FILE*;
+alias channel = /* _IO_ */FILE*;
 
 alias TestLib_cycles = ulong;
 
@@ -56,9 +56,9 @@ alias FStar_Date_timeSpan = c_ulong;
  * it, depending on the compiler and whether the user wants the verified
  * implementation or not. */
 
-alias FStar_UInt128_uint128 = <unimplemented>;
+struct FStar_UInt128_uint128 { ulong low; ulong high; }
 
-alias FStar_UInt128_t = <unimplemented>;
-alias FStar_UInt128_t_ = <unimplemented>;
-alias uint128_t = <unimplemented>;
+alias FStar_UInt128_t = FStar_UInt128_uint128;
+alias FStar_UInt128_t_ = FStar_UInt128_uint128;
+alias uint128_t = FStar_UInt128_uint128;
 

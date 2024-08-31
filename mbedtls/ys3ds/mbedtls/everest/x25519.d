@@ -19,6 +19,8 @@
  *  This file is part of Mbed TLS (https://tls.mbed.org)
  */
 
+import ys3ds.mbedtls.ecp;
+
 extern (C):
 
 enum MBEDTLS_ECP_TLS_CURVE25519 = 0x1d;

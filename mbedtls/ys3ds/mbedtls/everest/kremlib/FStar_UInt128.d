@@ -7,13 +7,13 @@
  * KreMLin version: 916c37ac
  */
 
+public import ys3ds.mbedtls.everest.kremlin.internal.types : FStar_UInt128_t;
+
 extern (C):
 
 ulong FStar_UInt128___proj__Mkuint128__item__low (FStar_UInt128_uint128 projectee);
 
 ulong FStar_UInt128___proj__Mkuint128__item__high (FStar_UInt128_uint128 projectee);
-
-alias FStar_UInt128_t = <unimplemented>;
 
 FStar_UInt128_uint128 FStar_UInt128_add (FStar_UInt128_uint128 a, FStar_UInt128_uint128 b);
 
