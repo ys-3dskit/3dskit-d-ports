@@ -663,7 +663,11 @@ void mbedtls_ssl_sig_hash_set_const_hash (
     mbedtls_md_type_t md_alg);
 
 /* Setup an empty signature-hash set */
-void mbedtls_ssl_sig_hash_set_init (mbedtls_ssl_sig_hash_set_t* set);
+pragma(inline, true) extern(D)
+void mbedtls_ssl_sig_hash_set_init (mbedtls_ssl_sig_hash_set_t* set)
+{
+  mbedtls_ssl_sig_hash_set_const_hash(set, MBEDTLS_MD_NONE);
+}
 
 /* MBEDTLS_SSL_PROTO_TLS1_2) &&
    MBEDTLS_KEY_EXCHANGE_WITH_CERT_ENABLED */
@@ -803,10 +807,31 @@ int mbedtls_ssl_psk_derive_premaster (
  * 2. static PSK configured by \c mbedtls_ssl_conf_psk()
  * Return a code and update the pair (PSK, PSK length) passed to this function
  */
+pragma(inline, true) extern(D)
 int mbedtls_ssl_get_psk (
     const(mbedtls_ssl_context)* ssl,
     const(ubyte*)* psk,
-    size_t* psk_len);
+    size_t* psk_len)
+{
+  if (ssl.handshake.psk != null && ssl.handshke.psk_len > 0)
+  {
+    *psk = ssl.handshake.psk;
+    *psk_len = ssl.handshake.psk_len;
+  }
+  else if (ssl.conf.psk != null && ssl.conf.psk_len > 0)
+  {
+    *psk = ssl.conf.psk;
+    *psk_len = ssl.conf.psk_len;
+  }
+  else
+  {
+    *psk = null;
+    *psk_len = 0;
+    return MBEDTLS_ERR_SSL_PRIVATE_KEY_REQUIRED;
+  }
+
+  return 0;
+}
 
 /**
  * Get the first defined opaque PSK by order of precedence:
@@ -839,10 +864,32 @@ int mbedtls_ssl_check_sig_hash (
     const(mbedtls_ssl_context)* ssl,
     mbedtls_md_type_t md);
 
-mbedtls_pk_context* mbedtls_ssl_own_key (mbedtls_ssl_context* ssl);
+pragma(inline, true) extern(D)
+{
+  mbedtls_pk_context* mbedtls_ssl_own_key (mbedtls_ssl_context* ssl)
+  {
+    mbedtls_ssl_key_cert* key_cert;
 
-mbedtls_x509_crt* mbedtls_ssl_own_cert (mbedtls_ssl_context* ssl);
+    if (ssl.handshake != null && ssl.handshake.key_cert != null)
+      key_cert = ssl.handshake.key_cert;
+    else
+      key_cert = ssl.conf.key_cert;
 
+    return key_cert == null ? null ? key_cert.key;
+  }
+
+  mbedtls_x509_crt* mbedtls_ssl_own_cert (mbedtls_ssl_context* ssl)
+  {
+    mbedtls_ssl_key_cert* key_cert;
+
+    if (ssl.handshake != null && ssl.handshake.key_cert != null)
+      key_cert = ssl.handshake.key_cert;
+    else
+      key_cert = ssl.conf.key_cert;
+
+    return key_cert == null ? null ? key_cert.cert;
+  }
+}
 /*
  * Check usage of a certificate wrt extensions:
  * keyUsage, extendedKeyUsage (later), and nSCertType (later).
@@ -871,11 +918,29 @@ void mbedtls_ssl_read_version (
     ref const(ubyte)[2] ver);
 
 /* MBEDTLS_SSL_PROTO_DTLS */
-size_t mbedtls_ssl_in_hdr_len (const(mbedtls_ssl_context)* ssl);
+pragma(inline, true) extern(D)
+{
+  size_t mbedtls_ssl_in_hdr_len (const(mbedtls_ssl_context)* ssl)
+  {
+    if (ssl.conf.transport == MBDETLS_SSL_TRANSPORT_DATAGRAM)
+      return 13;
+    else
+      return 5;
+  }
 
-size_t mbedtls_ssl_out_hdr_len (const(mbedtls_ssl_context)* ssl);
+  size_t mbedtls_ssl_out_hdr_len (const(mbedtls_ssl_context)* ssl)
+  {
+    return cast(size_t) (ssl.out_iv - ssl.out_hdr);
+  }
 
-size_t mbedtls_ssl_hs_hdr_len (const(mbedtls_ssl_context)* ssl);
+  size_t mbedtls_ssl_hs_hdr_len (const(mbedtls_ssl_context)* ssl)
+  {
+    if (ssl.conf.transport == MBEDTLS_SSL_TRANSPORT_DATAGRAM)
+      return 12;
+
+    return 4;
+  }
+}
 
 void mbedtls_ssl_send_flight_completed (mbedtls_ssl_context* ssl);
 void mbedtls_ssl_recv_flight_completed (mbedtls_ssl_context* ssl);
@@ -922,7 +987,14 @@ int mbedtls_ssl_decrypt_buf (
     mbedtls_record* rec);
 
 /* Length of the "epoch" field in the record header */
-size_t mbedtls_ssl_ep_len (const(mbedtls_ssl_context)* ssl);
+pragma(inline, true) extern(D)
+size_t mbedtls_ssl_ep_len (const(mbedtls_ssl_context)* ssl)
+{
+  if (ssl.conf.transport == MBEDTLS_SSL_TRANSPORT_DATAGRAM)
+    return 2;
+
+  return 0;
+}
 
 int mbedtls_ssl_resend_hello_request (mbedtls_ssl_context* ssl);
 /* MBEDTLS_SSL_PROTO_DTLS */

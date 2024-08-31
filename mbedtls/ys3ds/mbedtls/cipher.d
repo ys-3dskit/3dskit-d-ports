@@ -473,7 +473,15 @@ int mbedtls_cipher_setup (
  * \return       The block size of the underlying cipher.
  * \return       \c 0 if \p ctx has not been initialized.
  */
-uint mbedtls_cipher_get_block_size (const(mbedtls_cipher_context_t)* ctx);
+pragma(inline, true) extern(D)
+uint mbedtls_cipher_get_block_size (const(mbedtls_cipher_context_t)* ctx)
+{
+  MBEDTLS_INTERNAL_VALIDATE_RET(ctx != null, 0);
+  if (ctx.cipher_info == null)
+    return 0;
+
+  return ctx.cipher_info.block_size;
+}
 
 /**
  * \brief        This function returns the mode of operation for
@@ -484,8 +492,16 @@ uint mbedtls_cipher_get_block_size (const(mbedtls_cipher_context_t)* ctx);
  * \return       The mode of operation.
  * \return       #MBEDTLS_MODE_NONE if \p ctx has not been initialized.
  */
+pragma(inline, true) extern(D)
 mbedtls_cipher_mode_t mbedtls_cipher_get_cipher_mode (
     const(mbedtls_cipher_context_t)* ctx);
+{
+  MBEDTLS_INTERNAL_VALIDATE_RET(ctx != null, MBEDTLS_MODE_NONE);
+  if (ctx.cipher_info == null)
+    return MBEDTLS_MODE_NONE;
+
+  return ctx.cipher_info.mode;
+}
 
 /**
  * \brief       This function returns the size of the IV or nonce
@@ -497,7 +513,15 @@ mbedtls_cipher_mode_t mbedtls_cipher_get_cipher_mode (
  * \return      \c 0 for ciphers not using an IV or a nonce.
  * \return      The actual size if an IV has been set.
  */
-int mbedtls_cipher_get_iv_size (const(mbedtls_cipher_context_t)* ctx);
+pragma(inline, true) extern(D)
+int mbedtls_cipher_get_iv_size (const(mbedtls_cipher_context_t)* ctx)
+{
+  MBEDTLS_INTERNAL_VALIDATE_RET(ctx != null, 0);
+  if (ctx.cipher_info == null)
+    return 0;
+
+  return ctx.cipher_info.iv_size;
+}
 
 /**
  * \brief               This function returns the type of the given cipher.
@@ -507,8 +531,16 @@ int mbedtls_cipher_get_iv_size (const(mbedtls_cipher_context_t)* ctx);
  * \return              The type of the cipher.
  * \return              #MBEDTLS_CIPHER_NONE if \p ctx has not been initialized.
  */
+pragma(inline, true) extern(D)
 mbedtls_cipher_type_t mbedtls_cipher_get_type (
-    const(mbedtls_cipher_context_t)* ctx);
+    const(mbedtls_cipher_context_t)* ctx)
+{
+  MBEDTLS_INTERNAL_VALIDATE_RET(ctx != null, MBEDTLS_CIPHER_NONE);
+  if (ctx.cipher_info == null)
+    return MBEDTLS_CIPHER_NONE;
+
+  return ctx.cipher_info.type;
+}
 
 /**
  * \brief               This function returns the name of the given cipher
@@ -519,7 +551,15 @@ mbedtls_cipher_type_t mbedtls_cipher_get_type (
  * \return              The name of the cipher.
  * \return              NULL if \p ctx has not been not initialized.
  */
-const(char)* mbedtls_cipher_get_name (const(mbedtls_cipher_context_t)* ctx);
+pragma(inline, true) extern(D)
+const(char)* mbedtls_cipher_get_name (const(mbedtls_cipher_context_t)* ctx)
+{
+  MBEDTLS_INTERNAL_VALIDATE_RET(ctx != null, 0);
+  if (ctx.cipher_info == null)
+    return 0;
+
+  return ctx.cipher_info.name;
+}
 
 /**
  * \brief               This function returns the key length of the cipher.
@@ -530,7 +570,15 @@ const(char)* mbedtls_cipher_get_name (const(mbedtls_cipher_context_t)* ctx);
  * \return              #MBEDTLS_KEY_LENGTH_NONE if \p ctx has not been
  *                      initialized.
  */
-int mbedtls_cipher_get_key_bitlen (const(mbedtls_cipher_context_t)* ctx);
+pragma(inline, true) extern(D)
+int mbedtls_cipher_get_key_bitlen (const(mbedtls_cipher_context_t)* ctx)
+{
+  MBEDTLS_INTERNAL_VALIDATE_RET(ctx != null, MBEDTLS_KEY_LENGTH_NONE);
+  if (ctx.cipher_info == null)
+    return MBEDTLS_KEY_LENGTH_NONE;
+
+  return cast(int) ctx.cipher_info.key_bitlen;
+}
 
 /**
  * \brief          This function returns the operation of the given cipher.
@@ -540,8 +588,16 @@ int mbedtls_cipher_get_key_bitlen (const(mbedtls_cipher_context_t)* ctx);
  * \return         The type of operation: #MBEDTLS_ENCRYPT or #MBEDTLS_DECRYPT.
  * \return         #MBEDTLS_OPERATION_NONE if \p ctx has not been initialized.
  */
+pragma(inline, true) extern(D)
 mbedtls_operation_t mbedtls_cipher_get_operation (
-    const(mbedtls_cipher_context_t)* ctx);
+    const(mbedtls_cipher_context_t)* ctx)
+{
+  MBEDTLS_INTERNAL_VALIDATE_RET(ctx != null, MBEDTLS_OPERATION_NONE);
+  if (ctx.cipher_info == null)
+    return MBEDTLS_OPERATION_NONE;
+
+  return ctx.operation;
+}
 
 /**
  * \brief               This function sets the key to use with the given context.

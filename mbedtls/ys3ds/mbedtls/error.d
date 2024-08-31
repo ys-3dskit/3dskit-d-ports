@@ -127,7 +127,11 @@ extern (D) auto MBEDTLS_ERROR_ADD(T0, T1)(auto ref T0 high, auto ref T1 low)
  * \param file      file where this error code addition occurred.
  * \param line      line where this error code addition occurred.
  */
-int mbedtls_error_add (int high, int low, const(char)* file, int line);
+pragma(inline, true) extern(D)
+int mbedtls_error_add (int high, int low, const(char)* file, int line)
+{
+  return high + low;
+}
 
 /**
  * \brief Translate an Mbed TLS error code into a string representation.
